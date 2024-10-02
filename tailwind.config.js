@@ -1,10 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 
+// const {
+//   default: flattenColorPalette,
+// } = require("tailwindcss/lib/util/flattenColorPalette");
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-const colors = require("tailwindcss/colors");
+
+// const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./src/**/*.{jsx,tsx,ts,js}"],
@@ -39,4 +45,3 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
-
