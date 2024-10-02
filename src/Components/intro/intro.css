@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
-p {
+.bonus-info {
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: 700;

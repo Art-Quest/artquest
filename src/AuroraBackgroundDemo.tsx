@@ -8,6 +8,7 @@ import { AuroraBackground } from "./Components/lib/aurora-background";
 import Lottie from "lottie-react";
 import { Intro } from "./Components/intro/Intro";
 import VRGLASSES from "../src/GIF/vr-glasses.json"
+import { Footer } from "./Components/Footer/Footer";
 
 
 
@@ -46,6 +47,7 @@ export function AuroraBackgroundDemo() {
             <Lottie animationData={VRGLASSES} loop={true} />
           </div>
         </div>
+        {/* <Footer /> */}
       </motion.div>
     </AuroraBackground>
   );
