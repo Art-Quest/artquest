@@ -1,4 +1,4 @@
-interface ButtonProps {
+type ButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
   variant?: "primary" | "secondary" | "danger";  // Optional, with default set to 'primary'
@@ -30,7 +30,7 @@ interface InputFieldProps {
   placeholder?: string;  // Optional, placeholder for input field
   type?: string;  // Optional, default is 'text', but can be 'number', 'password', etc.
   value: string | number;  // Required, value of the input field
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;  // Required, change event handler
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;  
   className?: string;  // Optional, for custom class names
 }
 
