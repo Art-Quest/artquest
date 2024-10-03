@@ -22,7 +22,7 @@ const CreateQuestPage = () => {
   };
 
   return (
-    <div className="dark:bg-gray-900 w-full h-screen md:h-full">
+    <div className="dark:bg-gray-900 w-full min-h-screen">
 
    
     <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
