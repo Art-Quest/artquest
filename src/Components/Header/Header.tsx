@@ -24,7 +24,6 @@ export const Header = () => {
                     <div className="quests">
                         <h1 className="text-gray-800 hover:text-red-500">Hot 🔥</h1>
                     </div>
-
                 </div>
 
                 {/* Connect Wallet button (hidden on mobile, visible on md screens and up) */}
