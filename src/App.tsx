@@ -5,6 +5,7 @@ import  AuroraBackgroundDemo  from './AuroraBackgroundDemo';
 import { Footer } from './Components/Footer/Footer';
 import  Creator from './Pages/CreateQuest/Creator';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Explore from "./Pages/E"
 
 
 export default function App() {
