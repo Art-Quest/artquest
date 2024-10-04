@@ -6,6 +6,7 @@ import { Boxes } from "../../Components/lib/background-boxes";
 import {Header} from "../../Components/Header/Header"
 import Leaderboard from "../../Components/LeaderBoard";
 import "./Index.css"
+import  Home  from '../../modules/home/containers/Home';
 
 function BentoGridDemo() {
   return (
@@ -15,8 +16,8 @@ function BentoGridDemo() {
           <Boxes />
           <Header/>
 
-          <div className="h-[70%] z-20 flex justify-start items-start bg-gray-800  rounded-lg pb-4">
-            GAME
+          <div className="h-[70%] z-20 flex justify-center items-center mt-2 rounded-lg pb-4">
+           <Home/>
           </div>
 <div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
 

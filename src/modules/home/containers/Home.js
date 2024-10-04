@@ -6,6 +6,11 @@ import { Noodle } from '../components';
 import css from '../css/home.module.scss';
 
 const Home = () => {
+    const testImg = process.env.PUBLIC_URL + "/images/home/test.png";
+    const lines1 = process.env.PUBLIC_URL + "//images/home/lines-01.svg";
+    const lines2 = process.env.PUBLIC_URL + "/images/home/lines-02.svg";
+    const lines3 = process.env.PUBLIC_URL + "//images/home/lines-03.svg";
+
     const explainerContent = [
         {
             image: 'noodle.svg',
@@ -45,9 +50,9 @@ const Home = () => {
     return (
         <div className={css.home}>
             <div className={css.bg}>
-                <div className={css.lines1} />
-                <div className={css.lines2} />
-                <div className={css.lines3} />
+                <div className={css.lines1}   style={{ backgroundImage: `url(${lines1})` }} />
+                <div className={css.lines2}  style={{ backgroundImage: `url(${lines2})` }} />
+                <div className={css.lines3}  style={{ backgroundImage: `url(${lines3})` }} />
                 {/*<img src="/images/home/noodle.svg" alt="noodle" className={`${css.noodle} ${css.noodle1}`} />*/}
                 {/*<img src="/images/home/noodle.svg" alt="noodle" className={`${css.noodle} ${css.noodle2}`} />*/}
                 {/*<img src="/images/home/noodle.svg" alt="noodle" className={`${css.noodle} ${css.noodle3}`} />*/}
@@ -70,14 +75,15 @@ const Home = () => {
                 <Noodle delay={5.5}/>
             </div>
             <div className={css.shader} />
-            <Container>
+            <Container sx={{ my: 4 }}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} align="center">
                         <img src="/images/home/logo.svg" className={css.logoImg} alt="Noodle Quest" />
                     </Grid>
                     <Grid item xs={12} align="center">
                         <button
-                            className={`${css.menuButton} ${css.btnInfo}`}
+                            className={`${css.menuButton}  ${css.btnInfo}`}
+                            style={{ backgroundImage: `url(${testImg})` }}
                             onClick={toggleDrawer}
                         >
                             <IconInfo className={css.btnIcon}/> What is this?
@@ -85,6 +91,8 @@ const Home = () => {
                         <Link to="/game">
                             <button
                                 className={`${css.menuButton} ${css.btnPlay}`}
+                                style={{ backgroundImage: `url(${testImg})` }}
+
                             >
                                 <IconPlay className={css.btnIcon}/> Play
                             </button>
