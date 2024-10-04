@@ -31,9 +31,11 @@ import { cn } from "./Components/lib/utils";
       There's a place for everyone here
     </div>
     <div className="flex space-x-4 md:space-x-8 mt-4">
-      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
-        Join Quest
-      </button>
+        <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
+        <Link to="/explore">
+          Join Quest
+      </Link>
+        </button>
       <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
         <Link to="/quest-create">Create Quest</Link>
       </button>

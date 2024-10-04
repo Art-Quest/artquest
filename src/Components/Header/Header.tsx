@@ -2,6 +2,7 @@ import React from 'react';
 import "../Header/header.css";
 import search from "../../assets/magnifying-glass-solid.svg";
 import Logo from "../../assets/logo-no-bg.png"
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
     return (
@@ -11,7 +12,7 @@ export const Header = () => {
                 <div className="rounded-xl cursor-pointer md:text-xl w-24 flex items-center space-x-1">
                     {/* Add color classes */}
                     
-                    <img  src={Logo} alt="" />
+                  <Link to="/"><img  src={Logo} alt="" /></Link>
                 </div>
 
                 {/* Menu (hidden on mobile, visible on md screens and up) */}
