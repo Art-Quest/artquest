@@ -1,7 +1,6 @@
 import React from "react";
 import "../Header/header.css";
 import search from "../../assets/magnifying-glass-solid.svg";
-import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
