@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
@@ -11,14 +9,52 @@ import { Intro } from "./Components/intro/Intro";
 import VRGLASSES from "../src/GIF/vr-glasses.json"
 import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
+import { Boxes } from "./Components/lib/background-boxes";
+import { cn } from "./Components/lib/utils";
 
-
-
-export function AuroraBackgroundDemo() {
+ function AuroraBackgroundDemo() {
   return (
-    <>
+    <div>
+
+    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
+    <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+    <Boxes />
+
+    <Header />
+
+    <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mx-auto px-6 md:px-16 lg:mt-10">
+  <div className="md:w-[60%]">
+    <div className="text-4xl md:text-6xl 3xl:text-8xl font-bold dark:text-white leading-tight">
+      Junction where <br /> game creators meet <br /> gamers and <br /> benefit mutually
+    </div>
+    <div className="font-extralight text-lg md:text-3xl dark:text-neutral-200 py-4">
+      There's a place for everyone here
+    </div>
+    <div className="flex space-x-4 md:space-x-8 mt-4">
+      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
+        Join Quest
+      </button>
+      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
+        <Link to="/quest-create">Create Quest</Link>
+      </button>
+    </div>
+  </div>
+  <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
+    <Lottie animationData={VRGLASSES} loop={true} />
+  </div>
+</div>
+
+    </div>
+  </div>
+  );
+}
+
+export default AuroraBackgroundDemo
+
+
+/* 
+  <AuroraBackground>
       <Header />
-      <AuroraBackground>
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,12 +63,12 @@ export function AuroraBackgroundDemo() {
             duration: 1.8,
             ease: "easeInOut",
           }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4"
+          className="relative w-screen flex flex-col gap-4  px-4 mx-6"
         >
-          <Intro />
-          <div className="flex items-center justify-center landing-info space-x-16 flex">
-            <div className="info-text">
-              <div className="text-3xl w-30 md:text-7xl font-bold dark:text-white">
+        
+           <div className="">
+            <div className="">
+              <div className="text-xl md:text-7xl w-30  font-bold dark:text-white">
                 Junction where <br />game creators meet <br /> gamers and <br /> get benefits mutually
               </div>
               <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
@@ -47,14 +83,11 @@ export function AuroraBackgroundDemo() {
                 </button>
               </div>
             </div>
-            <div className="infoImg flex items-center justify-center">
+            <div className="w-[80%] flex items-center md:justify-center">
               <Lottie animationData={VRGLASSES} loop={true} />
             </div>
-          </div>
-          {/* <Footer /> */}
-        </motion.div>
-      </AuroraBackground>
-      <Footer />
-    </>
-  );
-}
+          </div> *
+          // </motion.div>
+          // <Footer />
+          // </AuroraBackground>
+*/
