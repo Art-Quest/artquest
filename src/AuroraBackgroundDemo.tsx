@@ -32,18 +32,18 @@ function AuroraBackgroundDemo() {
     <div className="flex space-x-4 md:space-x-8 mt-4">
         <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
         <Link to="/explore">
-          Join Quest
+                  Join Quest
       </Link>
-        </button>
-      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
-        <Link to="/quest-create">Create Quest</Link>
-      </button>
-    </div>
-  </div>
-  <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
-    <Lottie animationData={VRGLASSES} loop={true} />
-  </div>
-</div>
+                </button>
+              <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
+                <Link to="/quest-create">Create Quest</Link>
+              </button>
+            </div>
+          </div>
+          <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
+            <Lottie animationData={VRGLASSES} loop={true} />
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
