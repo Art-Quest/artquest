@@ -1,21 +1,20 @@
 import { motion } from "framer-motion";
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
-import infoImg from "./assets/artquest.webp"
-import introGif from "./assets/Animation - 1727805011685.gif"
+import infoImg from "./assets/artquest.webp";
+import introGif from "./assets/Animation - 1727805011685.gif";
 import { AuroraBackground } from "./Components/lib/aurora-background";
 import Lottie from "lottie-react";
 import { Intro } from "./Components/intro/Intro";
-import VRGLASSES from "../src/GIF/vr-glasses.json"
+import VRGLASSES from "../src/GIF/vr-glasses.json";
 import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
 import { Boxes } from "./Components/lib/background-boxes";
 import { cn } from "./Components/lib/utils";
 
- function AuroraBackgroundDemo() {
+function AuroraBackgroundDemo() {
   return (
     <div>
-
       <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
         <Boxes />
@@ -31,9 +30,11 @@ import { cn } from "./Components/lib/utils";
       There's a place for everyone here
     </div>
     <div className="flex space-x-4 md:space-x-8 mt-4">
-      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
-        Join Quest
-      </button>
+        <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
+        <Link to="/explore">
+          Join Quest
+      </Link>
+        </button>
       <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
         <Link to="/quest-create">Create Quest</Link>
       </button>
@@ -46,12 +47,10 @@ import { cn } from "./Components/lib/utils";
       </div>
       <Footer />
     </div>
-
   );
 }
 
-export default AuroraBackgroundDemo
-
+export default AuroraBackgroundDemo;
 
 /* 
   <AuroraBackground>
