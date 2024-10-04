@@ -6,7 +6,7 @@ import github from "../../assets/github-brands-solid.svg"
 export const Footer = () => {
   return (
     <footer>
-        <div className='flex items-center justify-evenly'>
+        <div className='bg-black flex items-center justify-evenly'>
             <div className="hidden sm:block text-white">
                 <p>&copy; 2024 ArtQuest. All rights reserved. </p>
             </div>
