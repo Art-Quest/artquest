@@ -16,11 +16,11 @@ import { cn } from "./Components/lib/utils";
   return (
     <div>
 
-    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
-    <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-    <Boxes />
+      <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
+        <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+        <Boxes />
 
-    <Header />
+        <Header />
 
     <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mx-auto px-6 md:px-16 lg:mt-10">
   <div className="md:w-[60%]">
@@ -44,8 +44,9 @@ import { cn } from "./Components/lib/utils";
   </div>
 </div>
 
+      </div>
+      <Footer />
     </div>
-  </div>
   );
 }
 
