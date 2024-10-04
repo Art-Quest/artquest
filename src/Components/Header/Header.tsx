@@ -19,7 +19,7 @@ export const Header = () => {
                         <h1 className="text-gray-800 hover:text-blue-500">Quests</h1>
                     </div>
                     <div className="cursor-pointer quests">
-                        <h1 className="text-gray-800 hover:text-blue-500">Bounties</h1>
+                        <h1 className="text-gray-800 hover:text-blue-500">Profile</h1>
                     </div>
                     <div className="cursor-pointer quests">
                         <h1 className="text-gray-800 hover:text-red-500">Hot 🔥</h1>
