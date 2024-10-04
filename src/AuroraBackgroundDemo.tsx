@@ -43,10 +43,10 @@ import { cn } from "./Components/lib/utils";
     <Lottie animationData={VRGLASSES} loop={true} />
   </div>
 </div>
-
       </div>
       <Footer />
     </div>
+
   );
 }
 
