@@ -3,18 +3,24 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "../../Components/lib/bento-grid";
 import { FaPlaystation } from "react-icons/fa";
 import { Boxes } from "../../Components/lib/background-boxes";
+import {Header} from "../../Components/Header/Header"
+import Leaderboard from "../../Components/LeaderBoard";
 import "./Index.css"
 
 function BentoGridDemo() {
   return (
     <div>
-    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
+    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm px-[2%]">
     <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
           <Boxes />
-          <div className="h-[100%] w-[70%] z-20 flex justify-start items-start bg-gray-400">
+          <Header/>
+
+          <div className="h-[70%] z-20 flex justify-start items-start bg-gray-800  rounded-lg pb-4">
             GAME
           </div>
-    <BentoGrid className="max-w-4xl mx-auto z-20 overflow-y-scroll scrollbar-hide">
+<div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
+
+    <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -26,6 +32,11 @@ function BentoGridDemo() {
           />
         ))}
     </BentoGrid>
+          <div className="hidden md:block">
+            <Leaderboard/>
+          </div>
+        
+        </div>
     </div>
         </div>
   );
