@@ -1,16 +1,25 @@
+/* eslint-disable */
+
 type ButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
-  variant?: "primary" | "secondary" | "danger";  // Optional, with default set to 'primary'
-  className?: string;  // Optional, allows adding additional custom classes
-}
+  variant?: "primary" | "secondary" | "danger"; // Optional, with default set to 'primary'
+  className?: string; // Optional, allows adding additional custom classes
+};
 
-export const Button: React.FC<ButtonProps> = ({ children, onClick, variant = "primary", className = "" }) => {
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  variant = "primary",
+  className = "",
+}) => {
   const baseStyles =
     "px-6 py-3 rounded-full font-bold transition duration-300 ease-in-out focus:outline-none";
   const variants = {
-    primary: "bg-black dark:bg-white text-white dark:text-black hover:bg-opacity-90",
-    secondary: "bg-gray-300 dark:bg-gray-700 text-black dark:text-white hover:bg-opacity-80",
+    primary:
+      "bg-black dark:bg-white text-white dark:text-black hover:bg-opacity-90",
+    secondary:
+      "bg-gray-300 dark:bg-gray-700 text-black dark:text-white hover:bg-opacity-80",
     danger: "bg-red-600 dark:bg-red-500 text-white hover:bg-opacity-90",
   };
 
@@ -24,14 +33,13 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick, variant = "pr
   );
 };
 
-
 interface InputFieldProps {
-  label?: string;  // Optional, allows adding a label
-  placeholder?: string;  // Optional, placeholder for input field
-  type?: string;  // Optional, default is 'text', but can be 'number', 'password', etc.
-  value: string | number;  // Required, value of the input field
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;  
-  className?: string;  // Optional, for custom class names
+  label?: string; // Optional, allows adding a label
+  placeholder?: string; // Optional, placeholder for input field
+  type?: string; // Optional, default is 'text', but can be 'number', 'password', etc.
+  value: string | number; // Required, value of the input field
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string; // Optional, for custom class names
 }
 
 export const InputField: React.FC<InputFieldProps> = ({
@@ -44,7 +52,11 @@ export const InputField: React.FC<InputFieldProps> = ({
 }) => {
   return (
     <div className={`flex flex-col mb-4 ${className}`}>
-      {label && <label className="font-semibold mb-2 text-gray-700 dark:text-gray-200">{label}</label>}
+      {label && (
+        <label className="font-semibold mb-2 text-gray-700 dark:text-gray-200">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         placeholder={placeholder}
@@ -56,18 +68,17 @@ export const InputField: React.FC<InputFieldProps> = ({
   );
 };
 
-
 interface Option {
-  value: string | number;  // Value for each option in the dropdown
-  label: string;  // Label shown for each option
+  value: string | number; // Value for each option in the dropdown
+  label: string; // Label shown for each option
 }
 
 interface SelectProps {
-  label?: string;  // Optional, label for the dropdown
-  options: Option[];  // Required, array of options for the dropdown
-  value: string | number;  // Required, current selected value
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;  // Required, change event handler
-  className?: string;  // Optional, for custom class names
+  label?: string; // Optional, label for the dropdown
+  options: Option[]; // Required, array of options for the dropdown
+  value: string | number; // Required, current selected value
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; // Required, change event handler
+  className?: string; // Optional, for custom class names
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -79,7 +90,11 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   return (
     <div className={`flex flex-col mb-4 ${className}`}>
-      {label && <label className="font-semibold mb-2 text-gray-700 dark:text-gray-200">{label}</label>}
+      {label && (
+        <label className="font-semibold mb-2 text-gray-700 dark:text-gray-200">
+          {label}
+        </label>
+      )}
       <select
         value={value}
         onChange={onChange}
