@@ -24,7 +24,7 @@ import { cn } from "./Components/lib/utils";
 
     <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mx-auto px-6 md:px-16 lg:mt-10">
   <div className="md:w-[60%]">
-    <div className="text-4xl md:text-6xl lg:text-8xl font-bold dark:text-white leading-tight">
+    <div className="text-4xl md:text-6xl 3xl:text-8xl font-bold dark:text-white leading-tight">
       Junction where <br /> game creators meet <br /> gamers and <br /> benefit mutually
     </div>
     <div className="font-extralight text-lg md:text-3xl dark:text-neutral-200 py-4">

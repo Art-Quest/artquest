@@ -5,17 +5,16 @@ import  AuroraBackgroundDemo  from './AuroraBackgroundDemo';
 import { Footer } from './Components/Footer/Footer';
 import  Creator from './Pages/CreateQuest/Creator';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Explore from "./Pages/E"
+import Explore from "./Pages/Explore"
 
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AuroraBackgroundDemo />}>
-        </Route>
-        <Route path="/quest-create" element={<Creator />} >
-        </Route>
+        <Route path="/" element={<AuroraBackgroundDemo />}/>
+        <Route path="/quest-create" element={<Creator />} />
+        <Route path="/explore" element={<Explore />} />
 
       </Routes>
     </BrowserRouter>
