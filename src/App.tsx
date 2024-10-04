@@ -6,6 +6,8 @@ import { Footer } from './Components/Footer/Footer';
 import  Creator from './Pages/CreateQuest/Creator';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Explore from "./Pages/Explore"
+import { Game } from './modules/game/containers';
+
 
 
 export default function App() {
@@ -15,6 +17,7 @@ export default function App() {
         <Route path="/" element={<AuroraBackgroundDemo />}/>
         <Route path="/quest-create" element={<Creator />} />
         <Route path="/explore" element={<Explore />} />
+        <Route  path="/game" element={<Game setUiMode={undefined}/>} />
 
       </Routes>
     </BrowserRouter>
