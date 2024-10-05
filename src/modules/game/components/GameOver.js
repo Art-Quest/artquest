@@ -20,7 +20,7 @@ const GameOver = ({ resetGame }) => {
                 YOU DID IT!
             </DialogTitle>
             <DialogContent className={css.content}>
-                You found all the noodles. Now it's time to sit down and have lunch! You live to adventure another day!
+                You found all the noodles. Now it&apos;s time to sit down and have lunch! You live to adventure another day!
             </DialogContent>
             <DialogActions className={css.actions}>
                 <Button onClick={handleReturnClick} variant="outlined" className={css.btn}>

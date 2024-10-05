@@ -34,7 +34,7 @@ const TeleporterDialog = ({ teleporterOpen, teleportSpots, handleTeleportClose, 
             <DialogContent dividers className={css.content}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} >
-                        Using your nifty teleporter, you can go to any of the markers you've visited before. Select a spot from the list below.
+                        Using your nifty teleporter, you can go to any of the markers you&apos;ve visited before. Select a spot from the list below.
                     </Grid>
                 </Grid>
             </DialogContent>

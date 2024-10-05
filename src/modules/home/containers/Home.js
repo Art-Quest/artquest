@@ -117,7 +117,7 @@ const Home = () => {
                             </div>
                         </Grid>
                         <Grid item xs={12}>
-                            <h2>It's <b>lunchtime</b>, adventurer!</h2>
+                            <h2>It&apos;s <b>lunchtime</b>, adventurer!</h2>
                         </Grid>
 
                         {

@@ -492,7 +492,9 @@ const Game = ({ setUiMode }) => {
             const objId = usedItem.id;
             const currentSpot =  getSpot(playerPos.x, playerPos.y, playerPos.z);
             switch(invAction.actionType){
-                case "fill-bowl":
+                case "fill-bowl": {
+
+                
                     const bowl = getAdjacentItemOfType('bowl');
                     if (bowl) {
                         startBlink(bowl.x, bowl.y, `blink-bowl-${objId}`);
@@ -507,7 +509,10 @@ const Game = ({ setUiMode }) => {
                         }
                     }
                     break;
-                case "clear":
+                }
+                case "clear": {
+
+                
                     const itemToClear = getAdjacentItemOfType(invAction.objectToClear);
                     if (itemToClear) {
                         if (invAction.actionConsumable){
@@ -520,10 +525,16 @@ const Game = ({ setUiMode }) => {
                         startBlink(itemToClear.x, itemToClear.y, `blink-clear-${objId}`);
                     }
                     break;
-                case "teleport-home":
+                }
+                case "teleport-home": {
+
+                
                     setTeleporterOpen(true);
                     break;
-                case "fish":
+                }
+                case "fish": {
+                
+                
                     const salmon = getAdjacentItemOfType('salmon');
                     if (salmon) {
                         startBlink(salmon.x, salmon.y, `blink-fish-${objId}`);
@@ -540,7 +551,10 @@ const Game = ({ setUiMode }) => {
                         toast('You hooked a big one! I wonder who likes fish.');
                     }
                     break;
-                case 'door':
+                }
+                case 'door': {
+
+                
                     // Find a door near the player
                     const currentSpotS =  getSpot(playerPos.x, playerPos.y + 1, playerPos.z);
                     const currentSpotE =  getSpot(playerPos.x + 1, playerPos.y, playerPos.z);
@@ -573,6 +587,7 @@ const Game = ({ setUiMode }) => {
                     }
                     // if no door, do nothing
                     break;
+                }
                 default:
                     break;
             }
