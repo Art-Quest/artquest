@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent, DialogTitle, DialogActions, Button } from '@material-ui/core';
+import { Dialog, DialogContent, DialogTitle, DialogActions, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; // useNavigate instead of withRouter
 import PropTypes from 'prop-types';
 import css from '../css/gameover.module.scss';

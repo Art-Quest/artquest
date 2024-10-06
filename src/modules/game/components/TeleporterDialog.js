@@ -1,7 +1,7 @@
 import React from 'react';
-import {Dialog, DialogContent, DialogActions, Button, Grid, Slide, DialogTitle, IconButton} from '@material-ui/core';
+import {Dialog, DialogContent, DialogActions, Button, Grid2 as Grid, Slide, DialogTitle, IconButton} from '@mui/material';
+import { Close as IconClose} from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import {Close as IconClose} from "@material-ui/icons";
 import css from '../css/dialogue.module.scss';
 
 const TeleporterDialog = ({ teleporterOpen, teleportSpots, handleTeleportClose, handleTeleportSelect}) => {

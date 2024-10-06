@@ -18,13 +18,13 @@ export const Header = () => {
                 {/* Menu (hidden on mobile, visible on md screens and up) */}
                 <div className="hidden md:flex md:space-x-16">
                     <div className="cursor-pointer quests">
-                        <h1 className="text-gray-800 hover:text-blue-500">Quests</h1>
+                        <Link to='/explore'><h1 className="text-slate-400 hover:text-blue-500">Quests</h1></Link>
                     </div>
                     <div className="cursor-pointer quests">
-                        <h1 className="text-gray-800 hover:text-blue-500">Profile</h1>
+                        <Link to='/profile'><h1 className="text-slate-400 hover:text-blue-500">Profile</h1></Link>
                     </div>
                     <div className="cursor-pointer quests">
-                        <h1 className="text-gray-800 hover:text-red-500">Hot 🔥</h1>
+                        <Link to='/game'><h1 className="text-red-500 hover:text-slate-500">Hot 🔥</h1></Link>
                     </div>
                 </div>
 

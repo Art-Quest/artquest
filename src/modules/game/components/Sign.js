@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent, DialogActions, Button, Grid, Slide } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions, Button, Grid, Slide } from '@mui/material';
 import PropTypes from 'prop-types';
 import css from '../css/dialogue.module.scss';
 

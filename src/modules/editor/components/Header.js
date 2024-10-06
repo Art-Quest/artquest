@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppBar, Toolbar, Button } from '@material-ui/core';
-import { ArrowForward as IconUp, ArrowBack as IconDown} from '@material-ui/icons';
+import {AppBar, Toolbar, Button } from '@mui/material';
+import {ArrowForward as IconUp, ArrowBack as IconDown} from '@mui/icons-material';
 
 import css from '../css/header.module.scss';
 

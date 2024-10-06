@@ -1,12 +1,12 @@
 import React from 'react';
-import { TextField, Button, Grid, Tabs, Tab, FormControl, Input, InputLabel } from '@material-ui/core';
+import { TextField, Button, Grid2 as Grid, Tabs, Tab, FormControl, Input, InputLabel } from '@mui/material';
 import Draggable from 'react-draggable';
 import { Delete as IconDelete,
   ArrowBack as IconLeft,
   ArrowForward as IconRight,
   ArrowUpward as IconUp,
   ArrowDownward as IconDown
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { EditorTile, Header, EditorItem } from '../components';
 import TabPanel from '../components/TabPanel';
 import mapObjTypes from '../../../data/mapObjTypes';

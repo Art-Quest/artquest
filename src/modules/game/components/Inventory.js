@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, Badge } from '@material-ui/core';
+import { IconButton, Badge } from '@mui/material';
 import PropTypes from 'prop-types';
 import css from '../css/hud.module.scss';
 

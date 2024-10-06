@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconButton, Fab } from '@material-ui/core';
-import { ExitToApp as IconQuit } from '@material-ui/icons';
+import { IconButton, Fab } from '@mui/material';
+import { ExitToApp as IconQuit } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import css from '../css/hud.module.scss';

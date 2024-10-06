@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import{ Button, InputField, Select }  from "../../Components/Reusable";
 import { Header } from "../../Components/Header/Header";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateQuestPage = () => {
@@ -12,6 +13,8 @@ const CreateQuestPage = () => {
   const [firstPrize, setFirstPrize] = useState("");
   const [secondPrize, setSecondPrize] = useState("");
   const [thirdPrize, setThirdPrize] = useState("");
+  const navigate = useNavigate()
+
 
   const paymentOptions = [
     { value: "equal", label: "Equal Pay" },
@@ -19,6 +22,7 @@ const CreateQuestPage = () => {
   ];
 
   const handleCreateQuest = () => {
+    navigate("/explore")
     // Handle create quest logic
   };
 
@@ -89,8 +93,8 @@ const CreateQuestPage = () => {
           </div>
         )}
 
-        <div className="flex justify-center mt-8">
-          <Button onClick={handleCreateQuest}>Create Quest</Button>
+        <div  className="flex justify-center mt-8">
+          <Button  onClick={handleCreateQuest}>Create Quest</Button>
         </div>
       </div>
     </div>

@@ -1,6 +1,13 @@
 import React from 'react';
-import { Grid, Container, Drawer, IconButton } from '@material-ui/core';
-import { Close as IconClose, PlayArrow as IconPlay, LiveHelp as IconInfo, ExitToApp as IconExit } from '@material-ui/icons';
+import { Grid2 as Grid, Container, Drawer, IconButton} from '@mui/material';
+
+import { Close as IconClose, 
+    PlayArrow as IconPlay, 
+    LiveHelp as IconInfo,
+    ExitToApp as IconExit,
+    
+} from "@mui/icons-material"
+
 import { Link } from 'react-router-dom';
 import { Noodle } from '../components';
 import css from '../css/home.module.scss';
@@ -75,7 +82,7 @@ const Home = () => {
                 <Noodle delay={5.5}/>
             </div>
             <div className={css.shader} />
-            <Container sx={{ my: 4 }}>
+            <Container  sx={{ my:4 }}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} align="center">
                         <img src="/images/home/logo.svg" className={css.logoImg} alt="Noodle Quest" />

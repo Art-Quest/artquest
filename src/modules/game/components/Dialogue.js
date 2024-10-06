@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog, DialogContent, DialogTitle, DialogActions, Button, IconButton, Grid } from '@material-ui/core';
-import { Close as IconClose } from '@material-ui/icons';
+import { Dialog, DialogContent, DialogTitle, DialogActions, Button, IconButton, Grid } from '@mui/material';
+import { Close as IconClose } from '@mui/icons-material';
 import dialogueData from "../../../data/dialogueData";
 import css from '../css/dialogue.module.scss';
 
