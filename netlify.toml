@@ -1,4 +1,4 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "npm install --force && npm run build"
   environment = { NPM_CONFIG_LOGLEVEL = "warn" }
   node_version = "20.13.1"
