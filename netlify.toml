@@ -1,4 +1,4 @@
 [build]
-  command = "yarn install && npm run build"
+  command = "yarn install --force && npm run build"
   environment = { NPM_CONFIG_LOGLEVEL = "warn" }
   node_version = "18.17.0"
