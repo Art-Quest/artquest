@@ -4,13 +4,19 @@
   "private": true,
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",
 =======
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.2",
     "@mui/material": "^6.1.2",
+<<<<<<< HEAD
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
+=======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -27,7 +33,11 @@
     "lottie-react": "^2.4.0",
     "react": "^18.3.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-confetti": "^5.0.1",
+=======
+    "react-confetti": "^6.1.0",
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
     "react-confetti": "^6.1.0",
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
@@ -40,6 +50,10 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^5.5.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "sass": "^1.79.4",
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
     "sass": "^1.79.4",
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
@@ -61,6 +75,9 @@
 =======
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
+<<<<<<< HEAD
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
+=======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -92,6 +109,9 @@
     "react-router-dom": "^6.26.2",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
     "sass": "^1.79.4",

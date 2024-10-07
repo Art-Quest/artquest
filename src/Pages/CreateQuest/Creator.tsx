@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import{ Button, InputField, Select }  from "../../Components/Reusable";
 import { Header } from "../../Components/Header/Header";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
 import { useNavigate } from "react-router-dom";
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
@@ -97,8 +101,13 @@ const CreateQuestPage = () => {
         )}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="flex justify-center mt-8">
           <Button onClick={handleCreateQuest}>Create Quest</Button>
+=======
+        <div  className="flex justify-center mt-8">
+          <Button  onClick={handleCreateQuest}>Create Quest</Button>
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
         <div  className="flex justify-center mt-8">
           <Button  onClick={handleCreateQuest}>Create Quest</Button>

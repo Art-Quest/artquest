@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useRef } from "react";
 import { Header } from "../../Components/Header/Header";
 import gsap from "gsap";
@@ -24,6 +25,8 @@ const Profile = () => {
       "-=0.5"
     );
 =======
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 import React, { useEffect, useRef, useState } from "react";
 import { Header } from "../../Components/Header/Header";
 import gsap from "gsap";
@@ -66,11 +69,15 @@ const Profile = () => {
         }),
       },
     });
+<<<<<<< HEAD
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
+=======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
   }, []);
 
   return (
     <>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div className="w-full bg-slate-900 p-10">
         <Header />
@@ -171,6 +178,8 @@ const Profile = () => {
       </div>
       <Footer />
 =======
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
       <div className=" w-full bg-slate-900 ">
         <div className="mx-auto container">
           <Header />
@@ -455,13 +464,19 @@ const Profile = () => {
           <Footer />
         </div>
       </div>
+<<<<<<< HEAD
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
+=======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
     </>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 const completedQuests = [
   { questName: "Call of Duty: Vangaurd", level: "Level 1 - 5" },
   { questName: "Call of Duty: Vangaurd", level: "Level 1 - 5" },
@@ -469,5 +484,8 @@ const completedQuests = [
   { questName: "Call of Duty: Vangaurd", level: "Level 1 - 5" },
 ];
 
+<<<<<<< HEAD
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
+=======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 export default Profile;

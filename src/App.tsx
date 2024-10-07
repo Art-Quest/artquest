@@ -1,6 +1,9 @@
 import React from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 // import logo from './logo.svg';
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 import { Header } from "./Components/Header/Header";
@@ -12,8 +15,12 @@ import Profile from "./Pages/Profile/Profile";
 import Explore from "./Pages/Explore"
 import { Game } from './modules/game/containers';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Profile from "./Pages/Profile/Profile";
 =======
+=======
+
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 
 
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
@@ -26,9 +33,12 @@ export default function App() {
         <Route path="/quest-create" element={<Creator />} />
         <Route path="/explore" element={<Explore />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route  path="/game" element={<Game setUiMode={undefined}/>} />
         <Route path="/profile" element={<Profile />} />
 =======
+=======
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
         <Route path="/profile" element={<Profile />} />
         <Route  path="/game" element={<Game setUiMode={undefined}/>} />
 

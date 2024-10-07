@@ -22,7 +22,11 @@ export const Header = () => {
                     </div>
                     <div className="cursor-pointer quests">
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <h1 className="text-gray-800 hover:text-blue-500">Profile</h1>
+=======
+                        <Link to='/profile'><h1 className="text-slate-400 hover:text-blue-500">Profile</h1></Link>
+>>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
 =======
                         <Link to='/profile'><h1 className="text-slate-400 hover:text-blue-500">Profile</h1></Link>
 >>>>>>> 10ebfdb2f00dd12f86c6a4e1693214c374ad7993
