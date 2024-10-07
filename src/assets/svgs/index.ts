@@ -4,3 +4,8 @@ export { default as GameIcon } from "./game_icon.svg";
 export { default as ProfileHeroImage } from "./profile_hero_image.svg";
 export { default as CallOfDuty } from "./Call_of_duty.svg";
 export { default as StarIcon } from "./star.svg";
+export { default as XboxLogo } from "./xbox_logo.svg";
+export { default as MicrosoftLogo } from "./microsoft_logo.svg";
+export { default as PlayLogo } from "./play_logo.svg";
+export { default as SteamLogo } from "./steam_logo.svg";
+export { default as Server } from "./server.svg";
