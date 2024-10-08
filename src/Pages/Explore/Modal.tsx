@@ -1,9 +1,34 @@
 import React from "react";
+import toast from "react-hot-toast";
+import { AppContext } from "../../Context";
+import { useNavigate } from "react-router-dom";
 
 const QuestModal = ({ isOpen, onClose, questDetails }) => {
   if (!isOpen) return null;
+  const [loading, setLoading] = React.useState(false);
+  const { getSmartContract } = React.useContext(AppContext);
+  const navigate = useNavigate();
 
   const { title, description, totalParticipants, leaderboard } = questDetails;
+  const handleJoinQuest = async () => {
+    try {
+      setLoading(true);
+      const contract = await getSmartContract();
+      const join = await contract.joinQuest(BigInt(2)).send({
+        from: window.tronWeb.defaultAddress.base58,
+        shouldPollResponse: false,
+      });
+
+      if (join) {
+        toast.error("Quest Joined Successfully");
+        navigate("/profile");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
@@ -65,8 +90,11 @@ const QuestModal = ({ isOpen, onClose, questDetails }) => {
 
         {/* Join Quest Button */}
         <div className="flex justify-end mt-6">
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
-            Join Quest
+          <button
+            onClick={handleJoinQuest}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          >
+            {loading ? "Joining..." : "Join Quest"}
           </button>
         </div>
       </div>

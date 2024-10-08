@@ -17,18 +17,22 @@ export const AppContext = React.createContext<{
   user: any;
   score: number;
   setScore: any;
+  isModalOpen: any;
+  setIsModalOpen: any;
 }>({
   getSmartContract: undefined,
   user: undefined,
   score: 0,
   setScore: undefined,
+  isModalOpen: undefined,
+  setIsModalOpen: undefined,
 });
 
 const network = "https://api.nileex.io";
 
 export const AppProvider = ({ children }: any) => {
   const [score, setScore] = React.useState(0);
-
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [user, setUser] = React.useState({
     pda: "",
     name: "",
@@ -90,6 +94,8 @@ export const AppProvider = ({ children }: any) => {
         getSmartContract,
         score,
         setScore,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "./utils";
+import { AppContext } from "../../Context";
 
 export const BentoGrid = ({
   className,
@@ -33,10 +34,16 @@ export const BentoGridItem = ({
   header?: React.ReactNode;
   icon?: React.ReactNode;
 }) => {
+  const { setIsModalOpen } = React.useContext(AppContext);
+
+  const handleClick = () => {
+    setIsModalOpen(true);
+  };
   return (
     <div
+      onClick={handleClick}
       className={cn(
-        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-gray-800 dark:border-none bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-gray-800 dark:border-none bg-white border border-transparent justify-between flex flex-col space-y-4",
         className
       )}
     >
