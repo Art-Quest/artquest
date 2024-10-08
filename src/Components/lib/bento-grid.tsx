@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "./utils";
 import { AppContext } from "../../Context";
-
+import Modal  from "../Modal/Modal";
 export const BentoGrid = ({
   className,
   children,
@@ -39,6 +39,7 @@ export const BentoGridItem = ({
   const handleClick = () => {
     setIsModalOpen(true);
   };
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div
       onClick={handleClick}
@@ -46,6 +47,7 @@ export const BentoGridItem = ({
         "row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-gray-800 dark:border-none bg-white border border-transparent justify-between flex flex-col space-y-4",
         className
       )}
+      onClick={() => {setModalOpen(true);}}
     >
       {header}
       <div className="group-hover/bento:translate-x-2 transition duration-200">
@@ -57,6 +59,7 @@ export const BentoGridItem = ({
           {description}
         </div>
       </div>
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
     </div>
   );
 };
