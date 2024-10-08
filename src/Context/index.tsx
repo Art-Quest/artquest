@@ -4,9 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 
 import abi from "../contract/abi.json";
-export const contractAddress_ = "TWE5CpLwpiXpaERhJbKuzUPHZksfPEniVS";
-
-import { useGetMyCampaigns, useGetAllCampaigns } from "../functions";
+export const contractAddress_ = "TRtGS1RGtH6JPP6cqVBDyEVw7uwseGNjei";
 import { QuestT } from "../redux/types";
 
 type bioT = {
@@ -22,7 +20,6 @@ export const AppContext = React.createContext<{
   user: undefined,
 });
 
-// const network = "https://api.shasta.trongrid.io";
 const network = "https://api.nileex.io";
 
 export const AppProvider = ({ children }: any) => {
@@ -37,8 +34,6 @@ export const AppProvider = ({ children }: any) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { getMyCampaigns } = useGetMyCampaigns();
-  const { getAllCampaigns, loading: isLoading_ } = useGetAllCampaigns();
   const walletAddress = useAppSelector((state) => state.tronData.walletAddress);
   const quests = useAppSelector((state) => state.quest);
 
@@ -46,38 +41,41 @@ export const AppProvider = ({ children }: any) => {
     window.tronWeb.setFullNode(network);
     if (walletAddress) {
       if (window.tronWeb.ready) {
-        return await window.tronWeb.contract(abi.entrys, contractAddress_);
+        return await window?.tronWeb?.contract(abi.entrys, contractAddress_);
       }
     }
   };
 
   React.useEffect(() => {
     const call = async () => {
-      await getAllCampaigns();
+      if (walletAddress) {
+        // await getAllCampaigns();
+
+        const userExist = quests?.some(
+          (campaign: QuestT) => campaign.address === walletAddress
+        );
+        if (userExist) {
+          console.log("user exists");
+          // const previousPage = location.state?.from || "campaign";
+          // navigate(previousPage);
+          navigate("explore");
+          return;
+        } else if (!userExist) {
+          if (location.pathname.includes("connect-wallet")) {
+            return;
+          } else {
+            navigate("/");
+            return;
+          }
+        }
+      } else if (!walletAddress && location.pathname.includes("details/")) {
+        return;
+      } else {
+        navigate("/");
+      }
     };
     call();
-
-    const userExist = quests?.filter(
-      (quest: QuestT) => quest.address === walletAddress
-    );
-    console.log(userExist, "UserExist");
-    // console.log(campaigns, "camp");
-    if (userExist === undefined) {
-      return;
-    }
-    if (!walletAddress && location.pathname.includes("details/")) {
-      return;
-    } else if (!walletAddress) {
-      navigate("/");
-    } else if (userExist.length > 0) {
-      getMyCampaigns();
-
-      const previousPage = location.state?.from || "campaign";
-      navigate(previousPage);
-    } else if (userExist.length === 0) {
-      navigate("/");
-    }
-  }, [walletAddress, isLoading_]);
+  }, [walletAddress]);
 
   return (
     <AppContext.Provider

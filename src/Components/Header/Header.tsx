@@ -3,6 +3,7 @@ import "../Header/header.css";
 import search from "../../assets/magnifying-glass-solid.svg";
 import Logo from "../../assets/logo-no-bg.png";
 import { Link } from "react-router-dom";
+import WalletButton from "../WalletButton"
 
 export const Header = () => {
   return (
@@ -38,9 +39,7 @@ export const Header = () => {
 
         {/* Connect Wallet button (hidden on mobile, visible on md screens and up) */}
         <div className="hidden md:block">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Connect Wallet
-          </button>
+          <WalletButton/>
         </div>
       </div>
     </div>

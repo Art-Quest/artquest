@@ -5,10 +5,19 @@ import { FaPlaystation } from "react-icons/fa";
 import { Boxes } from "../../Components/lib/background-boxes";
 import { Header } from "../../Components/Header/Header";
 import Leaderboard from "../../Components/LeaderBoard";
-import "./Index.css"
-import  Home  from '../../modules/home/containers/Home';
+import "./Index.css";
+import Home from "../../modules/home/containers/Home";
+import { useGetAllQuests } from "../../functions";
 
 function BentoGridDemo() {
+  const { getAllQuest } = useGetAllQuests();
+
+  React.useEffect(() => {
+    const call = async () => {
+      await getAllQuest();
+    };
+    call();
+  }, []);
   return (
     <div>
       <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm px-[2%]">
@@ -16,23 +25,22 @@ function BentoGridDemo() {
         <Boxes />
         <Header />
 
-          <div className="h-[70%] z-20 flex justify-center items-center mt-2 rounded-lg pb-4">
-           <Home/>
-          </div>
-<div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
-
-    <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
-      {items.map((item, i) => (
-        <BentoGridItem
-          key={i}
-          title={item.title}
-          description={item.description}
-          header={item.header}
-          icon={item.icon}
-          className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-          />
-        ))}
-    </BentoGrid>
+        <div className="h-[70%] z-20 flex justify-center items-center mt-2 rounded-lg pb-4">
+          <Home />
+        </div>
+        <div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
+          <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
+            {items.map((item, i) => (
+              <BentoGridItem
+                key={i}
+                title={item.title}
+                description={item.description}
+                header={item.header}
+                icon={item.icon}
+                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              />
+            ))}
+          </BentoGrid>
           <div className="hidden md:block">
             <Leaderboard />
           </div>

@@ -2,25 +2,68 @@ import React, { useState } from "react";
 import { Button, InputField, Select } from "../../Components/Reusable";
 import { Header } from "../../Components/Header/Header";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { AppContext } from "../../Context";
 
 const CreateQuestPage = () => {
   const [questName, setQuestName] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
-  const [prizePool, setPrizePool] = useState("");
+  const [prizePool, setPrizePool] = useState(0);
   const [paymentMode, setPaymentMode] = useState("equal");
   const [firstPrize, setFirstPrize] = useState("");
   const [secondPrize, setSecondPrize] = useState("");
   const [thirdPrize, setThirdPrize] = useState("");
+  const [linkToQuest, setLinkToQuest] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const { getSmartContract } = React.useContext(AppContext);
 
   const paymentOptions = [
     { value: "equal", label: "Equal Pay" },
     { value: "points", label: "Pay Based on Points" },
   ];
 
-  const handleCreateQuest = () => {
-    navigate("/explore");
+  const handleCreateQuest = async () => {
+    const endTimeBigInt = deadline
+      ? BigInt(new Date(deadline).getTime() / 1000)
+      : null;
+
+    try {
+      setLoading(true);
+      const contract = await getSmartContract();
+
+      const quest = await contract
+        .addQuest(
+          questName,
+          description,
+          endTimeBigInt,
+          linkToQuest,
+          BigInt(prizePool),
+          paymentMode,
+          false,
+          BigInt(prizePool),
+          BigInt(1),
+          [],
+          []
+        )
+        .send({
+          callValue: window?.tronWeb.toSun(prizePool),
+          from: window.tronWeb.defaultAddress.base58,
+          shouldPollResponse: false,
+        });
+      if (quest) {
+        toast.error("Quest Created Successfully");
+        navigate("/explore");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("something went wrong");
+    } finally {
+      setLoading(false);
+    }
+
     // Handle create quest logic
   };
 
@@ -52,11 +95,17 @@ const CreateQuestPage = () => {
           onChange={(e) => setDeadline(e.target.value)}
         />
         <InputField
+          label="Link To Quest"
+          placeholder="Enter the url to the Quest"
+          value={linkToQuest}
+          onChange={(e) => setLinkToQuest(e.target.value)}
+        />
+        <InputField
           label="Prize Pool"
           placeholder="Enter the total prize pool"
           type="number"
           value={prizePool}
-          onChange={(e) => setPrizePool(e.target.value)}
+          onChange={(e) => setPrizePool(+e.target.value)}
         />
         <Select
           label="Mode of Payment to Winners"
@@ -92,7 +141,11 @@ const CreateQuestPage = () => {
         )}
 
         <div className="flex justify-center mt-8">
-          <Button onClick={handleCreateQuest}>Create Quest</Button>
+          {loading ? (
+            <p>loading...</p>
+          ) : (
+            <Button onClick={handleCreateQuest}>Create Quest</Button>
+          )}
         </div>
       </div>
     </div>

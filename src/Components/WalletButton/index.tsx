@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 import { useAppSelector, useAppDispatch } from "../../redux/hook";
 import { addData } from "../../redux/slice/TronDataSlice";
 import { clearQuest } from "../../redux/slice/QuestSlice";
-import { clearMyCampaigns } from "../../redux/slice/MyCampaignSlice";
 // const network = "https://api.shasta.trongrid.io";
 const network = "https://api.nileex.io";
 
@@ -40,15 +39,15 @@ const WalletButton = () => {
 
   const connectWallet = async () => {
     try {
-      if (typeof window.tronWeb !== "undefined") {
-        if (window.tronWeb.ready) {
-          const address = window.tronWeb.defaultAddress.base58;
+      if (typeof window?.tronWeb !== "undefined") {
+        if (window?.tronWeb.ready) {
+          const address = window?.tronWeb.defaultAddress.base58;
           localStorage.setItem("walletAddress", address); // Save to localStorage
           checkNetwork();
           dispatch(addData({ walletAddress: address }));
         } else {
-          await window.tronLink.request({ method: "tron_requestAccounts" });
-          const address = window.tronWeb.defaultAddress.base58;
+          await window?.tronLink.request({ method: "tron_requestAccounts" });
+          const address = window?.tronWeb.defaultAddress.base58;
           localStorage.setItem("walletAddress", address); // Save to localStorage
           checkNetwork();
           dispatch(addData({ walletAddress: address }));
@@ -75,7 +74,6 @@ const WalletButton = () => {
     localStorage.removeItem("walletAddress"); // Remove from localStorage
     setIsWrongNetwork(false);
     dispatch(clearQuest());
-    dispatch(clearMyCampaigns());
   };
 
   const copyAddress = () => {

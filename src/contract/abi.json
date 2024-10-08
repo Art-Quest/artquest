@@ -1,229 +1,223 @@
 {
   "entrys": [
+    { "stateMutability": "Nonpayable", "type": "Constructor" },
     {
-      "inputs": [{ "name": "id", "type": "uint256" }],
-      "name": "Claim",
+      "inputs": [{ "name": "currentXP", "type": "uint256" }],
+      "name": "InsufficientXP",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "playerId", "type": "uint256" }],
+      "name": "NewPlayer",
+      "type": "Event"
+    },
+    {
+      "inputs": [{ "name": "questId", "type": "uint256" }],
+      "name": "NewQuest",
       "type": "Event"
     },
     {
       "inputs": [
-        { "indexed": true, "name": "id", "type": "uint256" },
-        { "indexed": true, "name": "donator", "type": "address" },
-        { "name": "amount", "type": "uint256" }
+        { "name": "questId", "type": "uint256" },
+        { "name": "participant", "type": "address" }
       ],
-      "name": "Donate",
+      "name": "ParticipantJoined",
+      "type": "Event"
+    },
+    {
+      "inputs": [{ "name": "questId", "type": "uint256" }],
+      "name": "QuestCompleted",
+      "type": "Event"
+    },
+    {
+      "inputs": [{ "name": "questId", "type": "uint256" }],
+      "name": "QuestDeleted",
       "type": "Event"
     },
     {
       "inputs": [
-        { "name": "id", "type": "uint256" },
-        { "indexed": true, "name": "admin", "type": "address" },
-        { "name": "title", "type": "string" },
-        { "name": "description", "type": "string" },
-        { "name": "tags", "type": "string[]" },
-        { "name": "amount_required", "type": "uint256" },
-        { "name": "endTime", "type": "uint256" },
-        { "name": "refundable", "type": "bool" }
+        { "name": "questId", "type": "uint256" },
+        { "name": "winners", "type": "address[]" },
+        { "name": "rewardPerWinner", "type": "uint256" }
       ],
-      "name": "Launch",
+      "name": "RewardDistributed",
       "type": "Event"
     },
     {
       "inputs": [
-        { "name": "id", "type": "uint256" },
-        { "indexed": true, "name": "donator", "type": "address" },
-        { "name": "amount", "type": "uint256" }
+        { "name": "questId", "type": "uint256" },
+        { "name": "winners", "type": "address[]" }
       ],
-      "name": "Refund",
+      "name": "WinnersSet",
       "type": "Event"
     },
     {
       "inputs": [
-        { "indexed": true, "name": "userAddress", "type": "address" },
-        { "name": "name", "type": "string" },
-        { "name": "email", "type": "string" },
-        { "name": "bio", "type": "string" },
-        { "name": "social_links", "type": "string[]" },
-        { "name": "verified", "type": "bool" },
-        { "name": "flagged", "type": "bool" }
+        { "name": "user", "type": "address" },
+        { "name": "xpAdded", "type": "uint256" }
       ],
-      "name": "UserProfileUpdated",
+      "name": "XPIncreased",
       "type": "Event"
     },
     {
-      "outputs": [
-        { "name": "id", "type": "uint256" },
-        { "name": "admin", "type": "address" },
-        { "name": "title", "type": "string" },
-        { "name": "description", "type": "string" },
-        { "name": "amount_required", "type": "uint256" },
-        { "name": "amount_donated", "type": "uint256" },
-        { "name": "donation_complete", "type": "bool" },
-        { "name": "endTime", "type": "uint256" },
-        { "name": "refundable", "type": "bool" },
-        { "name": "donationType", "type": "string" }
-      ],
-      "inputs": [{ "type": "uint256" }],
-      "name": "_campaigns",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "uint256" }],
-      "name": "campaignCounter",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [
-        { "name": "id", "type": "uint256" },
-        { "name": "admin", "type": "address" },
-        { "name": "title", "type": "string" },
-        { "name": "description", "type": "string" },
-        { "name": "amount_required", "type": "uint256" },
-        { "name": "amount_donated", "type": "uint256" },
-        { "name": "donation_complete", "type": "bool" },
-        { "name": "endTime", "type": "uint256" },
-        { "name": "refundable", "type": "bool" },
-        { "name": "donationType", "type": "string" }
-      ],
-      "inputs": [{ "type": "uint256" }],
-      "name": "campaigns",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
+      "outputs": [{ "type": "bool" }],
       "inputs": [
         { "name": "_title", "type": "string" },
         { "name": "_description", "type": "string" },
-        { "name": "amountRequired", "type": "uint64" },
-        { "name": "_tags", "type": "string[]" },
-        { "name": "_endTime", "type": "uint256" },
-        { "name": "_refundable", "type": "bool" },
-        { "name": "_donationType", "type": "string" }
+        { "name": "_deadline", "type": "uint256" },
+        { "name": "_linkToQuest", "type": "string" },
+        { "name": "_prizePool", "type": "uint256" },
+        { "name": "_paymentMode", "type": "string" },
+        { "name": "_rankedReward", "type": "bool" },
+        { "name": "_price", "type": "uint256" },
+        { "name": "_winnersCount", "type": "uint256" },
+        { "name": "_participants", "type": "address[]" },
+        { "name": "_winners", "type": "address[]" }
       ],
-      "name": "create",
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        { "name": "id", "type": "uint256" },
-        { "name": "tokenAddress", "type": "address" }
-      ],
-      "name": "donate",
+      "name": "addQuest",
       "stateMutability": "payable",
       "type": "function"
     },
     {
-      "outputs": [{ "type": "uint256" }],
-      "inputs": [{ "type": "uint256" }, { "type": "address" }],
-      "name": "donatedAmount",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
-        { "name": "campaignId", "type": "uint256" },
-        { "name": "tokenAddress", "type": "address" }
+        { "name": "_user", "type": "address" },
+        { "name": "_xp", "type": "uint256" }
       ],
-      "name": "finalizeCampaign",
+      "name": "addXp",
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "outputs": [{ "type": "tuple[]" }],
-      "name": "getAllCampaigns",
-      "stateMutability": "view",
+      "inputs": [
+        { "name": "_user", "type": "address" },
+        { "name": "_amount", "type": "uint256" }
+      ],
+      "name": "burnPoints",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "outputs": [{ "type": "tuple[]" }],
-      "name": "getAllCampaigns1",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "tuple[]" }],
-      "name": "getAllCampaigns2",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "tuple[]" }],
-      "name": "getAllUsers",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "tuple" }],
-      "inputs": [{ "name": "campaignId", "type": "uint256" }],
-      "name": "getCampaign",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "tuple" }],
-      "inputs": [{ "name": "userAddress", "type": "address" }],
-      "name": "getUserProfile",
-      "stateMutability": "view",
+      "inputs": [{ "name": "_questId", "type": "uint256" }],
+      "name": "completeQuest",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [
         { "name": "_name", "type": "string" },
+        { "name": "_username", "type": "string" },
         { "name": "_email", "type": "string" },
         { "name": "_bio", "type": "string" },
         { "name": "_socialLinks", "type": "string[]" },
-        { "name": "_interests", "type": "string[]" }
+        { "name": "_referrals", "type": "string[]" }
       ],
-      "name": "updateUserProfile",
+      "name": "createUserProfile",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "outputs": [{ "type": "bool" }],
+      "inputs": [{ "name": "_questId", "type": "uint256" }],
+      "name": "deleteQuest",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "name": "_name", "type": "string" }],
+      "name": "enterQuest",
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "outputs": [{ "type": "tuple[]" }],
+      "name": "getActiveQuests",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "name": "_user", "type": "address" },
+        { "name": "_xpAmount", "type": "uint256" }
+      ],
+      "name": "increaseXP",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "name": "_questId", "type": "uint256" }],
+      "name": "joinQuest",
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "outputs": [{ "type": "address" }],
-      "inputs": [{ "type": "uint256" }],
-      "name": "userAddresses",
+      "name": "owner",
       "stateMutability": "view",
       "type": "function"
     },
     {
       "outputs": [{ "type": "uint256" }],
-      "inputs": [{ "type": "address" }, { "type": "uint256" }],
-      "name": "userCampaigns",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "uint256" }],
-      "name": "userCounter",
+      "name": "playerId",
       "stateMutability": "view",
       "type": "function"
     },
     {
       "outputs": [
         { "name": "name", "type": "string" },
+        { "name": "playerAddress", "type": "address" },
+        { "name": "xp", "type": "uint256" }
+      ],
+      "inputs": [{ "type": "uint256" }],
+      "name": "players",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "outputs": [{ "type": "uint256" }],
+      "name": "questId",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "outputs": [
+        { "name": "title", "type": "string" },
+        { "name": "description", "type": "string" },
+        { "name": "deadline", "type": "uint256" },
+        { "name": "linkToQuest", "type": "string" },
+        { "name": "prizePool", "type": "uint256" },
+        { "name": "paymentMode", "type": "string" },
+        { "name": "rankedReward", "type": "bool" },
+        { "name": "price", "type": "uint256" },
+        { "name": "admin", "type": "address" },
+        { "name": "winnersCount", "type": "uint256" },
+        { "name": "isActive", "type": "bool" }
+      ],
+      "inputs": [{ "type": "uint256" }],
+      "name": "quests",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "name": "_questId", "type": "uint256" },
+        { "name": "_winners", "type": "address[]" }
+      ],
+      "name": "setWinners",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "outputs": [
+        { "name": "name", "type": "string" },
+        { "name": "username", "type": "string" },
         { "name": "userAddress", "type": "address" },
         { "name": "email", "type": "string" },
         { "name": "bio", "type": "string" },
-        { "name": "verified", "type": "bool" },
-        { "name": "flagged", "type": "bool" }
+        { "name": "xp", "type": "uint256" },
+        { "name": "balance", "type": "uint256" }
       ],
       "inputs": [{ "type": "address" }],
-      "name": "userProfiles",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "uint256" }],
-      "name": "version",
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "outputs": [{ "type": "uint256" }],
-      "name": "versions",
+      "name": "users",
       "stateMutability": "view",
       "type": "function"
     }
