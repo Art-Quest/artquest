@@ -18,6 +18,7 @@ import {
 import mapObjTypes from "../../../data/mapObjTypes";
 import itemData from "../../../data/itemData";
 import areaData from "../../../data/areaData";
+import { AppContext } from "../../../Context/index";
 
 import "react-toastify/dist/ReactToastify.css";
 import css from "../css/game.module.scss";
@@ -25,6 +26,7 @@ import css from "../css/game.module.scss";
 const Game = ({ setUiMode }) => {
   const [areaState, setAreaState] = React.useState(areaData);
   const [itemsState, setItemsState] = React.useState(itemData);
+  const { score, setScore } = React.useContext(AppContext);
   // const invCheat = [
   //     {id: 5555, objType: 'key1', x: 1, y: 1},
   //     {id: 5556, objType: 'fishing-pole', x: 1, y: 1},
@@ -43,7 +45,6 @@ const Game = ({ setUiMode }) => {
   const [dialogueOpenNpc, setDialogueOpenNpc] = React.useState("");
   const [dialogueOpenSign, setDialogueOpenSign] = React.useState("");
   const [teleporterOpen, setTeleporterOpen] = React.useState(false);
-  const [score, setScore] = React.useState(0);
   const startingPos = { x: 7, y: 6, z: 0, f: "e", s: 0 };
   const [playerPos, setPlayerPos] = React.useState(startingPos);
   const initTeleportSpots = [

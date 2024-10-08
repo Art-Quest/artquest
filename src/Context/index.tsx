@@ -15,14 +15,20 @@ type bioT = {
 export const AppContext = React.createContext<{
   getSmartContract: any;
   user: any;
+  score: number;
+  setScore: any;
 }>({
   getSmartContract: undefined,
   user: undefined,
+  score: 0,
+  setScore: undefined,
 });
 
 const network = "https://api.nileex.io";
 
 export const AppProvider = ({ children }: any) => {
+  const [score, setScore] = React.useState(0);
+
   const [user, setUser] = React.useState({
     pda: "",
     name: "",
@@ -82,6 +88,8 @@ export const AppProvider = ({ children }: any) => {
       value={{
         user,
         getSmartContract,
+        score,
+        setScore,
       }}
     >
       {children}

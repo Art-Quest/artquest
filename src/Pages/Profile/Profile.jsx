@@ -20,6 +20,8 @@ import { HiClipboardDocumentList, HiLink } from "react-icons/hi2";
 import { FaDiscord, FaTelegram } from "react-icons/fa";
 import { FaSquareXTwitter, FaXTwitter } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { AppContext } from "../../Context";
+import Modal from "./Modal";
 
 const Profile = () => {
   const [profileType, setProfileType] = useState(true);
@@ -48,6 +50,16 @@ const Profile = () => {
     });
   }, []);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
+
+  const updateProfile = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
       <div className=" w-full bg-slate-900 ">
@@ -71,11 +83,14 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* <div className="border border-white px-4 py-2 ">
-              <p className="text-white font-semibold text-base">
-                {profileType ? "YOU ARE A HOST" : "YOU ARE A GAMER"}
-              </p>
-            </div> */}
+            <div className="border border-white px-4 py-2 ">
+              <button
+                className="px-3 py-3 text-white bg-gray-600"
+                onClick={updateProfile}
+              >
+                Update Profile
+              </button>
+            </div>
 
             <div className="rounded-full text-white  flex flex-col px-4 py-2  gap-1">
               <p>Referrals : 0</p>
@@ -92,7 +107,7 @@ const Profile = () => {
             <div className="bg-slate-950 px-3 py-1 rounded-lg text-white flex items-center gap-3">
               <HiLink />
               <a className="text-base font-semibold" href="#">
-                @{username}
+                @{profile?.username}
               </a>
               <FaXTwitter />
             </div>
@@ -333,6 +348,7 @@ const Profile = () => {
 
           <Footer />
         </div>
+        {<Modal isOpen={isOpen} onClose={onClose} />}
       </div>
       {/* 
       <div>loren10
