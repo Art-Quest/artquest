@@ -67,14 +67,14 @@ function BentoGridDemo() {
             <Leaderboard />
           </div>
         </div>
+        {isModalOpen && (
+          <QuestModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            questDetails={questDetails}
+          />
+        )}
       </div>
-      {isModalOpen && (
-        <QuestModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          questDetails={questDetails}
-        />
-      )}
     </div>
   );
 }
