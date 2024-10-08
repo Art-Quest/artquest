@@ -5,8 +5,11 @@ import { Footer } from "./Components/Footer/Footer";
 import Creator from "./Pages/CreateQuest/Creator";
 import { Routes, Route } from "react-router-dom";
 import Profile from "./Pages/Profile/Profile";
-import Explore from "./Pages/Explore";
-import { Game } from "./modules/game/containers";
+import Explore from "./Pages/Explore"
+import { Game } from './modules/game/containers';
+import Modal from "../src/Pages/Modal/Modal"
+
+
 
 export default function App() {
   return (
@@ -16,7 +19,8 @@ export default function App() {
         <Route path="/quest-create" element={<Creator />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/game" element={<Game setUiMode={undefined} />} />
+        <Route  path="/game" element={<Game setUiMode={undefined}/>} />
+        {/* <Route path=""/> */}
       </Routes>
     </React.Fragment>
   );

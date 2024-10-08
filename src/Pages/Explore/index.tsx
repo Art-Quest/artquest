@@ -6,6 +6,7 @@ import { Boxes } from "../../Components/lib/background-boxes";
 import { Header } from "../../Components/Header/Header";
 import Leaderboard from "../../Components/LeaderBoard";
 import "./Index.css";
+import leftImg from "../../assets/artQuestGameCover.webp"
 import Home from "../../modules/home/containers/Home";
 import { useGetAllQuests } from "../../functions";
 import { useAppSelector } from "../../redux/hook";
@@ -14,7 +15,7 @@ import { AppContext } from "../../Context";
 
 function BentoGridDemo() {
   const { getAllQuest } = useGetAllQuests();
-  const quests = useAppSelector((state) => state.quest);
+  // const quests = useAppSelector((state) => state.quest);
 
   React.useEffect(() => {
     const call = async () => {
@@ -39,6 +40,13 @@ function BentoGridDemo() {
   };
 
   const closeModal = () => setIsModalOpen(false);
+  const [popup,setPop]=useState(false)
+    const handleClickOpen=()=>{
+        setPop(!popup)
+    }
+    const closePopup=()=>{
+        setPop(false)
+    }
 
   return (
     <div>
@@ -48,25 +56,88 @@ function BentoGridDemo() {
         <Header />
 
         <div className="h-[70%] z-20 flex justify-center items-center mt-2 rounded-lg pb-4">
-          <Home />
+          <Home/>
         </div>
-        <div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
-          <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
-            {quests?.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                header={<Skeleton />}
-                icon={<FaPlaystation className="h-4 w-4 text-neutral-500" />}
-                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+
+
+        {/* the popup modal on the explore page */}
+        <div>
+        {
+            popup?
+            <div className="main">
+              <div className="popup">
+                <div className="popup-header">
+                  <h1 className="quest-details">QUEST DETAILS</h1>
+                  <h1 onClick={closePopup} className="cancel">X</h1>
+                </div>
+                <div className="popup-content">
+
+                  <div className="section-container">
+
+                    <div className="section left-section">
+                      <img className=" leftImg" src={leftImg} alt="" />
+                      <h1 className="quest-title">Defend the Kingdom – Strategy Game Challenge</h1>
+                      <div className="hosts">
+                        <small>🟡 Host: SUKUNA Inc</small>
+                      </div>
+                    </div>
+
+                    <div className="section right-section">
+                      <h2>🟢 More Info</h2>
+                      <div>
+                        <div className="flex prize-pool">
+                          <h1 className="intro-sight">Prize Pool: </h1>
+                          <p>&nbsp; 5,600 USDC</p>
+                        </div>
+                        <div className="description">
+                          <div className="description-title">
+                            <p>Do you have what it takes to be the ultimate strategist? In this bounty challenge, you will play &quot;Defend the Kingdom, &quot;a real-time strategy game where players must build, fortify, and defend their kingdom against waves of enemies. Your task is to not only survive but also lead your kingdom to victory by conquering neighboring territories.Players will be ranked based on their defense strength, resource management, and battle tactics. The player with the highest score at the end of the challenge will claim the 5600 USDC bounty prize.</p>
+                          </div>
+                        </div>
+                        <div className="rules"> 
+                          <h1 className="intro-sight">Rules: </h1>
+                          <p>You must play using the official game server provided.
+                          </p>
+                          <p>The challenge lasts for 48 hours from the start of your game.
+                          </p>
+                          <p>No cheating or game exploits allowed.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="join-quest-button">
+                        <button className="join-quest">Interested</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                
+              </div>
+            </div>:""
+        }
+        </div>
+        {/* the popup modal on the explore page */}
+
+
+
+      <div className="flex md:flex-row overflow-y-scroll scrollbar-hide" onClick={handleClickOpen}>
+    
+        <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              icon={item.icon}
+              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
               />
             ))}
           </BentoGrid>
           <div className="hidden md:block">
             <Leaderboard />
           </div>
-        </div>
+      </div>
         {isModalOpen && (
           <QuestModal
             isOpen={isModalOpen}
