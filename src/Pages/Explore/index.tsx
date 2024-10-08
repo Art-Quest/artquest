@@ -9,6 +9,7 @@ import "./Index.css";
 import Home from "../../modules/home/containers/Home";
 import { useGetAllQuests } from "../../functions";
 import { useAppSelector } from "../../redux/hook";
+import QuestModal from "./Modal";
 
 function BentoGridDemo() {
   const { getAllQuest } = useGetAllQuests();
@@ -20,6 +21,25 @@ function BentoGridDemo() {
     };
     call();
   }, []);
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const questDetails = {
+    title: "Epic Dragon Hunt",
+    description:
+      "Join this quest to slay the mighty dragon and earn rewards. Prove your skills and climb the leaderboard!",
+    totalParticipants: 120,
+    leaderboard: [
+      { name: "Player1", score: 950 },
+      { name: "Player2", score: 880 },
+      { name: "Player3", score: 860 },
+      { name: "Player4", score: 840 },
+    ],
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div>
       <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm px-[2%]">
@@ -48,6 +68,11 @@ function BentoGridDemo() {
           </div>
         </div>
       </div>
+      <QuestModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        questDetails={questDetails}
+      />
     </div>
   );
 }

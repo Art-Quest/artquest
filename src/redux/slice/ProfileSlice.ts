@@ -24,6 +24,7 @@ export const ProfileSlice = createSlice({
       state.bio = payload.bio;
       state.social = payload.social;
       state.referral = payload.referral;
+      state.xp = payload.xp;
     },
     clearProfile: () => {
       return initialState;
