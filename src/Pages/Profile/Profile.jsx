@@ -126,7 +126,7 @@ const Profile = () => {
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <b className="text-[18px] sm:text-lg md:text-xl lg:text-2xl">
-                    23.1K $ARTQ
+                    150 $ARTQ
                   </b>
                 </div>
               </div>
@@ -143,7 +143,7 @@ const Profile = () => {
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <b className="text-[18px] sm:text-lg md:text-xl lg:text-2xl">
-                    300 ARTQ
+                    000 ARTQ
                   </b>
                 </div>
               </div>
@@ -194,7 +194,7 @@ const Profile = () => {
               {completedQuests.map((quest, index) => (
                 <div
                   key={index}
-                  className="p-2 sm:p-4 bg-gray-50 rounded-lg shadow-md "
+                  className="p-2 sm:p-4 bg-gray-700 rounded-lg shadow-md "
                 >
                   <img src={CallOfDuty} alt="Quest Icon" />
                   <h3 className="text-black text-base md:text-lg font-semibold mt-2">

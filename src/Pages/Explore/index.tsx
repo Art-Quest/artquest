@@ -8,9 +8,11 @@ import Leaderboard from "../../Components/LeaderBoard";
 import "./Index.css";
 import Home from "../../modules/home/containers/Home";
 import { useGetAllQuests } from "../../functions";
+import { useAppSelector } from "../../redux/hook";
 
 function BentoGridDemo() {
   const { getAllQuest } = useGetAllQuests();
+  const quests = useAppSelector((state) => state.quest);
 
   React.useEffect(() => {
     const call = async () => {
@@ -30,13 +32,13 @@ function BentoGridDemo() {
         </div>
         <div className="flex md:flex-row overflow-y-scroll scrollbar-hide">
           <BentoGrid className="md:max-w-[70%] mx-auto z-20 mt-3">
-            {items.map((item, i) => (
+            {quests?.map((item, i) => (
               <BentoGridItem
                 key={i}
                 title={item.title}
                 description={item.description}
-                header={item.header}
-                icon={item.icon}
+                header={<Skeleton />}
+                icon={<FaPlaystation className="h-4 w-4 text-neutral-500" />}
                 className={i === 3 || i === 6 ? "md:col-span-2" : ""}
               />
             ))}

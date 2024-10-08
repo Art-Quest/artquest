@@ -17,18 +17,13 @@ export const useGetAllQuests = () => {
       for (let i = 0; i <= totalCamp.toNumber(); i++) {
         const data = await contract?.quests(BigInt(i)).call();
         console.log(data);
-        // var param = {
-        //     address: window.tronWeb.address.fromHex(data.admin),
-        //     title: data.title,
-        //     amountDonated: data.amount_donated.toNumber(),
-        //     amountRequired: data.amount_required.toNumber(),
-        //     description: data.description,
-        //     donationComplete: data.donation_complete,
-        //     id: data.id.toNumber(),
-        //     endTime: data.endTime.toNumber(),
-        //     donationType: data.donationType,
-        //   };
-        //   dispatch(addQuest(param));
+        var param = {
+          address: window.tronWeb.address.fromHex(data.admin),
+          title: data.title,
+          description: data.description,
+          deadline: data.deadline.toNumber(),
+        };
+        dispatch(addQuest(param));
       }
       setLoading(false);
     } catch (err) {

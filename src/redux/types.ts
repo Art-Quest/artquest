@@ -10,13 +10,8 @@ export type RecipientT = {
 export type QuestT = {
   address: string;
   title: string;
-  amountDonated: number;
-  amountRequired: number;
   description: string;
-  donationComplete: boolean;
-  id: number;
-  endTime: number;
-  donationType: string;
+  deadline: number;
 };
 
 export type TransactionT = {
