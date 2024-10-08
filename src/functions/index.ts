@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { addQuest } from "../redux/slice/QuestSlice";
 import { QuestT } from "../redux/types";
+import { addProfile } from "../redux/slice/ProfileSlice";
 
 export const useGetAllQuests = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,40 @@ export const useGetAllQuests = () => {
     }
   };
   return { getAllQuest, loading };
+};
+
+export const useGetUserProfile = () => {
+  const [loading, setLoading] = useState(false);
+  const { getSmartContract } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const getProfile = async () => {
+    try {
+      setLoading(true);
+      const contract = await getSmartContract();
+      const user = await contract
+        ?.users(window.tronWeb.defaultAddress.base58)
+        .call();
+      console.log(user);
+      if (user) {
+        var param = {
+          name: user.name,
+          username: user.username,
+          email: user.email,
+          bio: user.bio,
+          social: [""],
+          referral: [""],
+          xp: user.xp.toNumber(),
+        };
+        dispatch(addProfile(param));
+        setLoading(false);
+      }
+    } catch (err) {
+      //   toast.error("something went wrong");
+      setLoading(false);
+      console.log(err);
+    }
+  };
+  return { getProfile, loading };
 };
 
 export const useGetAllCampaigns = () => {

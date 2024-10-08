@@ -28,6 +28,7 @@ export type ProfileT = {
   bio: string;
   social: string[];
   referral: string[];
+  xp: number;
 };
 
 export type TronDataSliceT = {

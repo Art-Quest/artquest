@@ -10,6 +10,7 @@ const initialState: ProfileT = {
   bio: "",
   social: [""],
   referral: [""],
+  xp: 0,
 };
 
 export const ProfileSlice = createSlice({

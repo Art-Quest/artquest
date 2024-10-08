@@ -22,6 +22,7 @@ import { FaSquareXTwitter, FaXTwitter } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { AppContext } from "../../Context";
 import Modal from "./Modal";
+import { useGetUserProfile } from "../../functions";
 
 const Profile = () => {
   const [profileType, setProfileType] = useState(true);
@@ -29,6 +30,7 @@ const Profile = () => {
   const address = useAppSelector((state) => state.tronData.walletAddress);
   const dispatch = useAppDispatch();
 
+  const { getProfile } = useGetUserProfile();
   const { getSmartContract } = React.useContext(AppContext);
 
   const scrollContainerRef = useRef(null);
@@ -48,6 +50,10 @@ const Profile = () => {
         }),
       },
     });
+    const call = async () => {
+      await getProfile();
+    };
+    call();
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -198,7 +204,7 @@ const Profile = () => {
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <b className="text-[18px] sm:text-lg md:text-xl lg:text-2xl">
-                    0.00 $ARTQ
+                    {profile.xp} $ARTQ
                   </b>
                 </div>
               </div>
