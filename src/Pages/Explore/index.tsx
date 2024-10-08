@@ -12,6 +12,10 @@ import { useGetAllQuests } from "../../functions";
 import { useAppSelector } from "../../redux/hook";
 import QuestModal from "./Modal";
 import { AppContext } from "../../Context";
+import card1 from "../../assets/game-cover1.webp"
+import card2 from "../../assets/game-cover2.webp"
+import card3 from "../../assets/game-cover3.webp"
+import { Footer } from "../../Components/Footer/Footer";
 
 function BentoGridDemo() {
   const { getAllQuest } = useGetAllQuests();
@@ -64,8 +68,8 @@ function BentoGridDemo() {
         <div>
         {
             popup?
-            <div className="main">
-              <div className="popup">
+            <div className="main bg-gray-700 text-white">
+              <div className="popup bg-gray-700 text-white">
                 <div className="popup-header">
                   <h1 className="quest-details">QUEST DETAILS</h1>
                   <h1 onClick={closePopup} className="cancel">X</h1>
@@ -146,6 +150,7 @@ function BentoGridDemo() {
           />
         )}
       </div>
+      <Footer />
     </div>
   );
 }
@@ -159,44 +164,86 @@ const items = [
   {
     title: "The Dawn of Innovation",
     description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card1}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Digital Revolution",
     description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card2}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Art of Design",
     description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card3}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Power of Communication",
     description:
       "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full communication"
+        src={card1}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Pursuit of Knowledge",
     description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card2}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Joy of Creation",
     description: "Experience the thrill of bringing ideas to life.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card3}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Spirit of Adventure",
     description: "Embark on exciting journeys and thrilling discoveries.",
-    header: <Skeleton />,
+    header: (  <div className="relative w-full h-48">
+      <img
+        className="object-contain w-full h-full"
+        src={card1}
+        alt="card"
+      />
+    </div>),
     icon: <FaPlaystation className="h-4 w-4 text-neutral-500" />,
   },
 ];
