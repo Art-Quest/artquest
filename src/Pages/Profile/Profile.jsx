@@ -19,9 +19,15 @@ import { HiCheckCircle } from "react-icons/hi";
 import { HiClipboardDocumentList, HiLink } from "react-icons/hi2";
 import { FaDiscord, FaTelegram } from "react-icons/fa";
 import { FaSquareXTwitter, FaXTwitter } from "react-icons/fa6";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 
 const Profile = () => {
   const [profileType, setProfileType] = useState(true);
+  const profile = useAppSelector((state) => state.profile);
+  const address = useAppSelector((state) => state.tronData.walletAddress);
+  const dispatch = useAppDispatch();
+
+  const { getSmartContract } = React.useContext(AppContext);
 
   const scrollContainerRef = useRef(null);
 
@@ -57,11 +63,11 @@ const Profile = () => {
               <div className="text-white flex flex-col gap-[2px]">
                 <div className="flex items-center gap-2">
                   <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium sm:font-semibold">
-                    Hello, Username
+                    Hello, {profile?.username}
                   </h1>
                   <HiCheckCircle />
                 </div>
-                <span className="text-sm text-gray-400">0x3Bffr...a992</span>
+                <span className="text-sm text-gray-400">{address}</span>
               </div>
             </div>
 
@@ -86,7 +92,7 @@ const Profile = () => {
             <div className="bg-slate-950 px-3 py-1 rounded-lg text-white flex items-center gap-3">
               <HiLink />
               <a className="text-base font-semibold" href="#">
-                @user_name
+                @{username}
               </a>
               <FaXTwitter />
             </div>
@@ -94,7 +100,7 @@ const Profile = () => {
             <div className="bg-slate-950 px-3 py-1 rounded-lg text-white flex items-center gap-3">
               <HiLink />
               <a className="text-base font-semibold" href="#">
-                @user_name
+                @discord
               </a>
               <FaDiscord />
             </div>
@@ -102,7 +108,7 @@ const Profile = () => {
             <div className="bg-slate-950 px-3 py-1 rounded-lg text-white flex items-center gap-3">
               <HiLink />
               <a className="text-base font-semibold" href="#">
-                @user_name
+                @telegram
               </a>
               <FaTelegram />
             </div>

@@ -21,9 +21,13 @@ export type TransactionT = {
   signature: string;
 };
 
-export type PriceT = {
-  usd: string;
-  zeta: number;
+export type ProfileT = {
+  name: string;
+  username: string;
+  email: string;
+  bio: string;
+  social: string[];
+  referral: string[];
 };
 
 export type TronDataSliceT = {
