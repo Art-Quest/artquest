@@ -88,7 +88,7 @@ const WalletButton = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       {!wallet.walletAddress ? (
         // Connect Wallet button
         <button

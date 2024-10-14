@@ -11,11 +11,16 @@ import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
 import { Boxes } from "./Components/lib/background-boxes";
 import { cn } from "./Components/lib/utils";
+import { useAppSelector } from "./redux/hook";
+import WalletButton from "./Components/WalletButton";
 
 function AuroraBackgroundDemo() {
+  const wallet = useAppSelector((state) => state.tronData.walletAddress);
+  console.log(wallet);
+
   return (
     <div>
-      <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm">
+      <div className="h-full relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm py-5 sm:py-3">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
         <Boxes />
 
@@ -29,17 +34,23 @@ function AuroraBackgroundDemo() {
               benefit mutually
             </div>
             {/* <div className="font-extralight text-lg md:text-3xl dark:text-neutral-200 py-4"> */}
-            <div className="font-light text-lg md:text-3xl text-white dark:text-neutral-200 py-4">
+            <div className="font-light text-lg md:text-3xl text-white dark:text-neutral-200 py-2">
               There&apos;s a place for everyone here
             </div>
-            <div className="flex space-x-4 md:space-x-8 mt-4">
+            <div className="flex space-x-4 md:space-x-8 mt-4 pb-5">
               {/* <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20"> */}
-              <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
-                <Link to="/explore">Join Quest</Link>
-              </button>
-              <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
-                <Link to="/quest-create">Create Quest</Link>
-              </button>
+              {wallet ? (
+                <>
+                  <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
+                    <Link to="/explore">Join Quest</Link>
+                  </button>
+                  <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
+                    <Link to="/quest-create">Create Quest</Link>
+                  </button>{" "}
+                </>
+              ) : (
+                <WalletButton />
+              )}
             </div>
           </div>
           <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
