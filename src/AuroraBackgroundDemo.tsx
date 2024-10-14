@@ -21,29 +21,31 @@ function AuroraBackgroundDemo() {
 
         <Header />
 
-    <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mx-auto px-6 md:px-16 lg:mt-10">
-  <div className="md:w-[60%]">
-    <div className="text-4xl md:text-6xl 3xl:text-8xl font-bold dark:text-white leading-tight">
-      Junction where <br /> game creators meet <br /> gamers and <br /> benefit mutually
-    </div>
-    <div className="font-extralight text-lg md:text-3xl dark:text-neutral-200 py-4">
-      There&apos;s a place for everyone here
-    </div>
-    <div className="flex space-x-4 md:space-x-8 mt-4">
-        <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
-        <Link to="/explore">
-          Join Quest
-      </Link>
-        </button>
-      <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20">
-        <Link to="/quest-create">Create Quest</Link>
-      </button>
-    </div>
-  </div>
-  <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
-    <Lottie animationData={VRGLASSES} loop={true} />
-  </div>
-</div>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mx-auto px-6 md:px-16 lg:mt-10">
+          <div className="md:w-[60%]">
+            {/* <div className="text-4xl md:text-6xl 3xl:text-8xl font-bold dark:text-white leading-tight"> */}
+            <div className="text-4xl md:text-6xl font-bold text-white dark:text-white  leading-tight">
+              Junction where <br /> game creators meet <br /> gamers and <br />{" "}
+              benefit mutually
+            </div>
+            {/* <div className="font-extralight text-lg md:text-3xl dark:text-neutral-200 py-4"> */}
+            <div className="font-light text-lg md:text-3xl text-white dark:text-neutral-200 py-4">
+              There&apos;s a place for everyone here
+            </div>
+            <div className="flex space-x-4 md:space-x-8 mt-4">
+              {/* <button className="bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 z-20"> */}
+              <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
+                <Link to="/explore">Join Quest</Link>
+              </button>
+              <button className="bg-white dark:bg-white rounded-full text-black dark:text-black px-6 py-3 z-20">
+                <Link to="/quest-create">Create Quest</Link>
+              </button>
+            </div>
+          </div>
+          <div className="w-full md:w-[40%] flex items-center justify-center mt-6 md:mt-0">
+            <Lottie animationData={VRGLASSES} loop={true} />
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
