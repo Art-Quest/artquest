@@ -3,13 +3,14 @@ import toast from "react-hot-toast";
 import { AppContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
 
-const QuestModal = ({ isOpen, onClose, questDetails }) => {
+const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
   if (!isOpen) return null;
   const [loading, setLoading] = React.useState(false);
   const { getSmartContract } = React.useContext(AppContext);
   const navigate = useNavigate();
-
+  const [fetchingDetails, setFetchingDetails] = React.useState(false)
   const { title, description, totalParticipants, leaderboard } = questDetails;
+  const [data, setData]  = React.useState([])
   const handleJoinQuest = async () => {
     try {
       setLoading(true);
@@ -30,12 +31,33 @@ const QuestModal = ({ isOpen, onClose, questDetails }) => {
     }
   };
 
+  React.useMemo(() => {
+    const call = async() => {
+
+      try {
+        const contract = await getSmartContract();
+        setFetchingDetails(true)
+        const det = await contract.quests(BigInt(id)).call();
+        console.log(det)
+        setData(det)
+      } catch(err)  {
+        setLoading(false);
+        console.log(err);
+    }finally {
+      setFetchingDetails(false)
+    }
+  }
+  call()
+
+  }, [id])
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-      <div className="bg-gray-600 text-white rounded-lg shadow-lg max-w-3xl w-full p-6 space-y-6">
+      {fetchingDetails ? <div className="text-white">fetching quest details...</div> 
+      :<div className="bg-gray-600 text-white rounded-lg shadow-lg max-w-3xl w-full p-6 space-y-6">
         {/* Modal Header */}
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold">{title}</h2>
+          <h2 className="text-3xl font-bold">{data[0]}</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-200"
@@ -58,14 +80,14 @@ const QuestModal = ({ isOpen, onClose, questDetails }) => {
         </div>
 
         {/* Quest Description */}
-        <p className="text-gray-300 text-lg">{description}</p>
+        <p className="text-gray-300 text-lg">{data[1]}</p>
 
-        {/* Total Participants */}
+        {/* Prize Pool */}
         <div className="mt-4">
           <span className="block text-gray-300 font-semibold">
-            Total Participants:{" "}
+            Prize Pool:{" "}
           </span>
-          <span className="text-xl font-bold">{totalParticipants}</span>
+          <span className="text-xl font-bold">${data[4]?.toNumber().toLocaleString()}</span>
         </div>
 
         {/* Leaderboard */}
@@ -97,7 +119,7 @@ const QuestModal = ({ isOpen, onClose, questDetails }) => {
             {loading ? "Joining..." : "Join Quest"}
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

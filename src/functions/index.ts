@@ -31,7 +31,6 @@ export const useGetAllQuests = () => {
       }
       setLoading(false);
     } catch (err) {
-      //   toast.error("something went wrong");
       setLoading(false);
       console.log(err);
     }

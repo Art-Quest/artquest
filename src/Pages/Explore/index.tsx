@@ -20,7 +20,7 @@ import { Footer } from "../../Components/Footer/Footer";
 function BentoGridDemo() {
   const { getAllQuest } = useGetAllQuests();
   const quests = useAppSelector((state) => state.quest);
-
+  const [id, setId] = useState(null)
   React.useEffect(() => {
     const call = async () => {
       await getAllQuest();
@@ -61,7 +61,7 @@ function BentoGridDemo() {
   )
 
   const handleClick = (id:number) => {
-    console.log(id)
+    setId(id)
     setIsModalOpen(true);
   };
 
@@ -106,6 +106,7 @@ function BentoGridDemo() {
       </div>
         {isModalOpen && (
           <QuestModal
+            id={id}
             isOpen={isModalOpen}
             onClose={closeModal}
             questDetails={questDetails}
