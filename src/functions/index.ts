@@ -19,10 +19,13 @@ export const useGetAllQuests = () => {
         const data = await contract?.quests(BigInt(i)).call();
         console.log(data);
         var param = {
+          id: i,
           address: window.tronWeb.address.fromHex(data.admin),
           title: data.title,
           description: data.description,
           deadline: data.deadline.toNumber(),
+          price: data.price.toNumber()
+
         };
         dispatch(addQuest(param));
       }

@@ -8,10 +8,12 @@ export type RecipientT = {
 };
 
 export type QuestT = {
+  id: number;
   address: string;
   title: string;
   description: string;
   deadline: number;
+  price:number
 };
 
 export type TransactionT = {
