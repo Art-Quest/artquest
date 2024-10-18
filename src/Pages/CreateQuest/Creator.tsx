@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, InputField, Select } from "../../Components/Reusable";
 import { Header } from "../../Components/Header/Header";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AppContext } from "../../Context";
+import Modal from "./Modal"
+import { useGetUserProfile } from "../../functions";
+import { useAppSelector } from "../../redux/hook";
 
 const CreateQuestPage = () => {
   const [questName, setQuestName] = useState("");
@@ -17,8 +20,11 @@ const CreateQuestPage = () => {
   const [linkToQuest, setLinkToQuest] = useState("");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const {getProfile,  loading:profileLoad } =  useGetUserProfile()
+  const profile = useAppSelector((state) => state.profile)
+  const { getSmartContract} = React.useContext(AppContext);
 
-  const { getSmartContract } = React.useContext(AppContext);
+  const [isOpen, setIsOpen] = useState(true)
 
   const paymentOptions = [
     { value: "equal", label: "Equal Pay" },
@@ -26,6 +32,10 @@ const CreateQuestPage = () => {
   ];
 
   const handleCreateQuest = async () => {
+    if (profile.xp < 100) {
+      toast.error("You need enough Xp to create a quest, trying playing the game :)")
+      return
+    }
     const endTimeBigInt = deadline
       ? BigInt(new Date(deadline).getTime() / 1000)
       : null;
@@ -67,6 +77,17 @@ const CreateQuestPage = () => {
     // Handle create quest logic
   };
 
+
+    useEffect(() => {
+          const call = async() => {
+            await getProfile()
+          }
+          call();
+    }, [])
+
+    const handleOnClose = () => {
+      setIsOpen(false)
+    }
   return (
     <div className=" bg-gradient-to-b from-slate-900 via-slate-800 to-gray-900 w-full min-h-screen">
       <Header />
@@ -142,12 +163,17 @@ const CreateQuestPage = () => {
 
         <div className="flex justify-center mt-8">
           {loading ? (
-            <p>loading...</p>
+            <p className="text-white">loading...</p>
           ) : (
             <Button onClick={handleCreateQuest}>Create Quest</Button>
           )}
         </div>
       </div>
+      {!profileLoad  &&  (
+
+        <Modal isOpen={isOpen} onClose={handleOnClose}/>
+      )
+      }
     </div>
   );
 };

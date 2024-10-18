@@ -38,7 +38,7 @@ export const Header = () => {
         </div>
 
         {/* Connect Wallet button (hidden on mobile, visible on md screens and up) */}
-        <div className="block">
+        <div className="hidden md:block">
           <WalletButton />
         </div>
       </div>

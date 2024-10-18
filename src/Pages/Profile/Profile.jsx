@@ -89,13 +89,14 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="border border-white px-4 py-2 ">
-              <button
-                className="px-3 py-3 text-white bg-gray-600"
-                onClick={updateProfile}
-              >
-                Update Profile
-              </button>
+            <div className=" px-4 py-2 ">
+            <button
+              className="px-3 py-3 text-white bg-gray-600 animate-bounce hover:bg-gray-500 rounded-lg"
+              onClick={updateProfile}
+            >
+              Update/Create Profile
+            </button>
+
             </div>
 
             <div className="rounded-full text-white  flex flex-col px-4 py-2  gap-1">

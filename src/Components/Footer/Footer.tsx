@@ -7,7 +7,7 @@ import "./footer.css";
 export const Footer = () => {
   return (
     <footer>
-      <div className="footer-cover flex items-center justify-evenly">
+      <div className="footer-cover  flex items-center justify-evenly">
         <div className="cover-text hidden sm:block text-white">
           <p>&copy; 2024 ArtQuest. All rights reserved. </p>
         </div>

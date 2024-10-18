@@ -20,7 +20,7 @@ function AuroraBackgroundDemo() {
 
   return (
     <div>
-      <div className="h-full relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm py-5 sm:py-3">
+      <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col rounded-sm py-5 sm:py-3">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
         <Boxes />
 

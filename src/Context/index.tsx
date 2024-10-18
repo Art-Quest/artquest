@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import abi from "../contract/abi.json";
 export const contractAddress_ = "TRtGS1RGtH6JPP6cqVBDyEVw7uwseGNjei";
 import { QuestT } from "../redux/types";
+import { useGetUserProfile } from "../functions";
 
 type bioT = {
   name: string;
@@ -46,6 +47,7 @@ export const AppProvider = ({ children }: any) => {
 
   const walletAddress = useAppSelector((state) => state.tronData.walletAddress);
   const quests = useAppSelector((state) => state.quest);
+  const { getProfile } = useGetUserProfile();
 
   const getSmartContract = async () => {
     window.tronWeb.setFullNode(network);
@@ -60,6 +62,7 @@ export const AppProvider = ({ children }: any) => {
     const call = async () => {
       if (walletAddress) {
         // await getAllCampaigns();
+        await getProfile();
 
         const userExist = quests?.some(
           (campaign: QuestT) => campaign.address === walletAddress

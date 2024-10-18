@@ -64,64 +64,6 @@ function BentoGridDemo() {
         </div>
 
 
-        {/* the popup modal on the explore page */}
-        <div>
-        {
-            popup?
-            <div className="main bg-gray-700 text-white">
-              <div className="popup bg-gray-700 text-white">
-                <div className="popup-header">
-                  <h1 className="quest-details">QUEST DETAILS</h1>
-                  <h1 onClick={closePopup} className="cancel">X</h1>
-                </div>
-                <div className="popup-content">
-
-                  <div className="section-container">
-
-                    <div className="section left-section">
-                      <img className=" leftImg" src={leftImg} alt="" />
-                      <h1 className="quest-title">Defend the Kingdom – Strategy Game Challenge</h1>
-                      <div className="hosts">
-                        <small>🟡 Host: SUKUNA Inc</small>
-                      </div>
-                    </div>
-
-                    <div className="section right-section">
-                      <h2>🟢 More Info</h2>
-                      <div>
-                        <div className="flex prize-pool">
-                          <h1 className="intro-sight">Prize Pool: </h1>
-                          <p>&nbsp; 5,600 USDC</p>
-                        </div>
-                        <div className="description">
-                          <div className="description-title">
-                            <p>Do you have what it takes to be the ultimate strategist? In this bounty challenge, you will play &quot;Defend the Kingdom, &quot;a real-time strategy game where players must build, fortify, and defend their kingdom against waves of enemies. Your task is to not only survive but also lead your kingdom to victory by conquering neighboring territories.Players will be ranked based on their defense strength, resource management, and battle tactics. The player with the highest score at the end of the challenge will claim the 5600 USDC bounty prize.</p>
-                          </div>
-                        </div>
-                        <div className="rules"> 
-                          <h1 className="intro-sight">Rules: </h1>
-                          <p>You must play using the official game server provided.
-                          </p>
-                          <p>The challenge lasts for 48 hours from the start of your game.
-                          </p>
-                          <p>No cheating or game exploits allowed.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="join-quest-button">
-                        <button className="join-quest">Interested</button>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                
-              </div>
-            </div>:""
-        }
-        </div>
-        {/* the popup modal on the explore page */}
-
 
 
       <div className="flex md:flex-row overflow-y-scroll scrollbar-hide" onClick={handleClickOpen}>
