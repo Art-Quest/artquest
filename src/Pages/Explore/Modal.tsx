@@ -2,6 +2,8 @@ import React from "react";
 import toast from "react-hot-toast";
 import { AppContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hook";
+import { addMyQuest } from "../../redux/slice/MyQuestSlice";
 
 const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
   if (!isOpen) return null;
@@ -9,8 +11,11 @@ const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
   const { getSmartContract } = React.useContext(AppContext);
   const navigate = useNavigate();
   const [fetchingDetails, setFetchingDetails] = React.useState(false)
-  const { title, description, totalParticipants, leaderboard } = questDetails;
+  const {  leaderboard } = questDetails;
   const [data, setData]  = React.useState([])
+  const dispatch = useAppDispatch()
+
+  
   const handleJoinQuest = async () => {
     try {
       setLoading(true);
@@ -21,9 +26,18 @@ const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
       });
 
       if (join) {
-        toast.error("Quest Joined Successfully");
+        toast.success("Quest Joined Successfully");
         navigate("/profile");
       }
+      const quest = {
+        id: id,
+        address:  window.tronWeb.address.fromHex(data[8]),
+        title: data[0],
+        description: data[1],
+        deadline: data[2].toNumber(),
+        price:data[4].toNumber()
+      }
+      dispatch(addMyQuest(quest))
     } catch (err) {
       console.log(err);
     } finally {
@@ -38,7 +52,6 @@ const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
         const contract = await getSmartContract();
         setFetchingDetails(true)
         const det = await contract.quests(BigInt(id)).call();
-        console.log(det)
         setData(det)
       } catch(err)  {
         setLoading(false);

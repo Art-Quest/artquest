@@ -23,12 +23,14 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { AppContext } from "../../Context";
 import Modal from "./Modal";
 import { useGetUserProfile } from "../../functions";
+import CompleteQuestModal from "./CompleteQuestModal"
 
 const Profile = () => {
   const [profileType, setProfileType] = useState(true);
   const profile = useAppSelector((state) => state.profile);
   const address = useAppSelector((state) => state.tronData.walletAddress);
   const dispatch = useAppDispatch();
+  const joinedQuests = useAppSelector((state) => state.myQuests)
 
   const { getProfile } = useGetUserProfile();
   const { getSmartContract } = React.useContext(AppContext);
@@ -57,14 +59,37 @@ const Profile = () => {
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [completeQuestModalisOpen, setCompleteQuestModalisOpen] = useState(false)
 
   const onClose = () => {
     setIsOpen(false);
   };
 
+  const completeQuestModalonClose = () => {
+    setCompleteQuestModalisOpen(false)
+  }
+
   const updateProfile = () => {
     setIsOpen(true);
   };
+
+
+  const completeQuestModalonSubmit = async () => {
+      try {
+          const contract = await getSmartContract()
+          const complete = await contract.joinQuest(BigInt(1)).send({
+            from: window.tronWeb.defaultAddress.base58,
+            shouldPollResponse: false,
+          });
+
+          if (complete) {
+            toast.success("Proof Submitted, reward will be distributed to winners after deadline");
+            navigate("/explore");
+          }
+      }catch (err) {
+        console.log(err)
+      }
+  }
 
   return (
     <>
@@ -215,30 +240,30 @@ const Profile = () => {
           {/* Completed Quests */}
           <section className="bg-slate-950 p-10 rounded-lg shadow-md mb-6 text-white">
             <h2 className="text-lg md:text-2xl font-semibold mb-4">
-              Completed Quests
+              Joined Quests
             </h2>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {completedQuests.map((quest, index) => (
+              {joinedQuests?.map((quest, index) => (
                 <div
                   key={index}
+              
                   className="p-2 sm:p-4 bg-gray-700 rounded-lg shadow-md "
                 >
                   <img src={CallOfDuty} alt="Quest Icon" />
                   <h3 className="text-black text-base md:text-lg font-semibold mt-2">
-                    {quest.questName}
+                    {quest.title}
                   </h3>
-                  <p className="text-gray-700 text-sm">{quest.level} </p>
+                  <p className="text-green-700 text-sm">${quest.price.toLocaleString()} </p>
 
                   <div className="flex text-gray-700 justify-between items-center mt-2">
                     <div className="flex items-center gap-1">
                       <img className="h-4 w-4" src={StarIcon} alt="star icon" />
                       <span className="text-[12px]">4.5</span>
                     </div>
-                    <span className="text-[12px]">250 $ARTQ</span>
-                    <span className="bg-[#3B82F6] px-3 text-white font-medium">
-                      Completed
-                    </span>
+                    <button     onClick={ () =>   setCompleteQuestModalisOpen(true)} className="bg-[#3B82F6] px-3 text-white font-medium">
+                      complete
+                    </button>
                   </div>
                 </div>
               ))}
@@ -261,7 +286,7 @@ const Profile = () => {
 
                   <div className="flex flex-col items-start justify-start text-white">
                     <p className="font-semibold text-base sm:text-lg md:text-xl">
-                      50+
+                      1+
                     </p>
                     <span className="text-gray-400 text-[12px]">
                       Games played
@@ -276,7 +301,7 @@ const Profile = () => {
 
                   <div className="flex flex-col items-start justify-start text-white">
                     <p className="font-semibold text-base sm:text-lg md:text-xl">
-                      70+
+                      0+
                     </p>
                     <span className="text-gray-400 text-[12px]">
                       Quests Completed
@@ -291,7 +316,7 @@ const Profile = () => {
 
                   <div className="flex flex-col items-start justify-start text-white">
                     <p className="font-semibold text-base sm:text-lg md:text-xl">
-                      60+
+                      1+
                     </p>
                     <span className="text-gray-400 text-[12px]">
                       Badge Earned
@@ -356,6 +381,7 @@ const Profile = () => {
           <Footer />
         </div>
         {<Modal isOpen={isOpen} onClose={onClose} />}
+        {<CompleteQuestModal isOpen={completeQuestModalisOpen} onClose={completeQuestModalonClose} onSubmit={completeQuestModalonSubmit}/>}
       </div>
       {/* 
       <div>loren10
