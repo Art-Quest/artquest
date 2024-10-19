@@ -25,10 +25,6 @@ const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
         shouldPollResponse: false,
       });
 
-      if (join) {
-        toast.success("Quest Joined Successfully");
-        navigate("/profile");
-      }
       const quest = {
         id: id,
         address:  window.tronWeb.address.fromHex(data[8]),
@@ -37,7 +33,11 @@ const QuestModal = ({ isOpen, onClose,id, questDetails }) => {
         deadline: data[2].toNumber(),
         price:data[4].toNumber()
       }
-      dispatch(addMyQuest(quest))
+      if (join) {
+        toast.success("Quest Joined Successfully");
+        navigate("/profile");
+        dispatch(addMyQuest(quest))
+      }
     } catch (err) {
       console.log(err);
     } finally {

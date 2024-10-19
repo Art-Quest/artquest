@@ -262,7 +262,7 @@ const Profile = () => {
                       <span className="text-[12px]">4.5</span>
                     </div>
                     <button     onClick={ () =>   setCompleteQuestModalisOpen(true)} className="bg-[#3B82F6] px-3 text-white font-medium">
-                      complete
+                     Mark as Completed
                     </button>
                   </div>
                 </div>
