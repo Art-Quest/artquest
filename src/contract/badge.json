@@ -1,0 +1,229 @@
+{
+  "entrys": [
+    { "stateMutability": "Nonpayable", "type": "Constructor" },
+    {
+      "inputs": [
+        { "name": "sender", "type": "address" },
+        { "name": "tokenId", "type": "uint256" },
+        { "name": "owner", "type": "address" }
+      ],
+      "name": "ERC721IncorrectOwner",
+      "type": "Error"
+    },
+    {
+      "inputs": [
+        { "name": "operator", "type": "address" },
+        { "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "ERC721InsufficientApproval",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "approver", "type": "address" }],
+      "name": "ERC721InvalidApprover",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "operator", "type": "address" }],
+      "name": "ERC721InvalidOperator",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "owner", "type": "address" }],
+      "name": "ERC721InvalidOwner",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "receiver", "type": "address" }],
+      "name": "ERC721InvalidReceiver",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "sender", "type": "address" }],
+      "name": "ERC721InvalidSender",
+      "type": "Error"
+    },
+    {
+      "inputs": [{ "name": "tokenId", "type": "uint256" }],
+      "name": "ERC721NonexistentToken",
+      "type": "Error"
+    },
+    {
+      "inputs": [
+        { "indexed": true, "name": "owner", "type": "address" },
+        { "indexed": true, "name": "approved", "type": "address" },
+        { "indexed": true, "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "Approval",
+      "type": "Event"
+    },
+    {
+      "inputs": [
+        { "indexed": true, "name": "owner", "type": "address" },
+        { "indexed": true, "name": "operator", "type": "address" },
+        { "name": "approved", "type": "bool" }
+      ],
+      "name": "ApprovalForAll",
+      "type": "Event"
+    },
+    {
+      "inputs": [
+        { "indexed": true, "name": "from", "type": "address" },
+        { "indexed": true, "name": "to", "type": "address" },
+        { "indexed": true, "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "Transfer",
+      "type": "Event"
+    },
+    {
+      "inputs": [
+        { "name": "to", "type": "address" },
+        { "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "approve",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "uint256" }],
+      "inputs": [{ "name": "owner", "type": "address" }],
+      "name": "balanceOf",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "tokenId", "type": "uint256" },
+        { "name": "allowance", "type": "uint256" }
+      ],
+      "name": "burnBadge",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "xpBalance", "type": "uint256" },
+        { "name": "allowance", "type": "uint256" }
+      ],
+      "name": "claimBadge",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "address" }],
+      "inputs": [{ "name": "tokenId", "type": "uint256" }],
+      "name": "getApproved",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "bool" }],
+      "inputs": [{ "type": "address" }],
+      "name": "hasBadge",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "bool" }],
+      "inputs": [
+        { "name": "owner", "type": "address" },
+        { "name": "operator", "type": "address" }
+      ],
+      "name": "isApprovedForAll",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "string" }],
+      "name": "name",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "uint256" }],
+      "name": "nextTokenId",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "address" }],
+      "inputs": [{ "name": "tokenId", "type": "uint256" }],
+      "name": "ownerOf",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "bool" }],
+      "inputs": [{ "name": "user", "type": "address" }],
+      "name": "ownsBadge",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "from", "type": "address" },
+        { "name": "to", "type": "address" },
+        { "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "safeTransferFrom",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "from", "type": "address" },
+        { "name": "to", "type": "address" },
+        { "name": "tokenId", "type": "uint256" },
+        { "name": "data", "type": "bytes" }
+      ],
+      "name": "safeTransferFrom",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "operator", "type": "address" },
+        { "name": "approved", "type": "bool" }
+      ],
+      "name": "setApprovalForAll",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "bool" }],
+      "inputs": [{ "name": "interfaceId", "type": "bytes4" }],
+      "name": "supportsInterface",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "string" }],
+      "name": "symbol",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "string" }],
+      "inputs": [{ "name": "tokenId", "type": "uint256" }],
+      "name": "tokenURI",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "outputs": [{ "type": "uint256" }],
+      "name": "totalBadgesMinted",
+      "stateMutability": "View",
+      "type": "Function"
+    },
+    {
+      "inputs": [
+        { "name": "from", "type": "address" },
+        { "name": "to", "type": "address" },
+        { "name": "tokenId", "type": "uint256" }
+      ],
+      "name": "transferFrom",
+      "stateMutability": "Nonpayable",
+      "type": "Function"
+    }
+  ]
+}

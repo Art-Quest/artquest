@@ -23,19 +23,29 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { AppContext } from "../../Context";
 import Modal from "./Modal";
 import { useGetUserProfile } from "../../functions";
-import CompleteQuestModal from "./CompleteQuestModal"
+import CompleteQuestModal from "./CompleteQuestModal";
+import toast from "react-hot-toast";
+import abi from "../../contract/badge.json";
+const contractAddress = "TNHckM2oxc2GFbbiirPzckmeArFM1qfjJg";
+import SuccessModal from "./Badge";
 
 const Profile = () => {
   const [profileType, setProfileType] = useState(true);
   const profile = useAppSelector((state) => state.profile);
   const address = useAppSelector((state) => state.tronData.walletAddress);
   const dispatch = useAppDispatch();
-  const joinedQuests = useAppSelector((state) => state.myQuests)
+  const joinedQuests = useAppSelector((state) => state.myQuests);
+  const [isBarged, setIsBarged] = useState(false);
+  const [BadgeIsOpen, setBadgeIsOpen] = useState(false);
 
   const { getProfile } = useGetUserProfile();
   const { getSmartContract } = React.useContext(AppContext);
 
   const scrollContainerRef = useRef(null);
+
+  const BadgeIsOnClose = () => {
+    setBadgeIsOpen(false);
+  };
 
   useEffect(() => {
     const scrollWidth = scrollContainerRef.current.scrollWidth;
@@ -59,37 +69,88 @@ const Profile = () => {
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [completeQuestModalisOpen, setCompleteQuestModalisOpen] = useState(false)
-
+  const [completeQuestModalisOpen, setCompleteQuestModalisOpen] =
+    useState(false);
+  const [claimed, setClaimed] = React.useState(false);
+  const [claimLoading, setClaimLoading] = React.useState(false);
   const onClose = () => {
     setIsOpen(false);
   };
 
   const completeQuestModalonClose = () => {
-    setCompleteQuestModalisOpen(false)
-  }
+    setCompleteQuestModalisOpen(false);
+  };
 
   const updateProfile = () => {
     setIsOpen(true);
   };
 
-
   const completeQuestModalonSubmit = async () => {
-      try {
-          const contract = await getSmartContract()
-          const complete = await contract.joinQuest(BigInt(1)).send({
-            from: window.tronWeb.defaultAddress.base58,
-            shouldPollResponse: false,
-          });
+    try {
+      const contract = await getSmartContract();
+      const complete = await contract.joinQuest(BigInt(1)).send({
+        from: window.tronWeb.defaultAddress.base58,
+        shouldPollResponse: false,
+      });
 
-          if (complete) {
-            toast.success("Proof Submitted, reward will be distributed to winners after deadline");
-            navigate("/explore");
-          }
-      }catch (err) {
-        console.log(err)
+      if (complete) {
+        toast.success(
+          "Proof Submitted, reward will be distributed to winners after deadline"
+        );
+        navigate("/explore");
       }
-  }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleGetIfBarged = async () => {
+    try {
+      const contract = await window?.tronWeb?.contract(
+        abi.entrys,
+        contractAddress
+      );
+      const data = await contract
+        .hasBadge(window?.tronWeb.defaultAddress.base58)
+        .call();
+      setIsBarged(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleClaim = async () => {
+    try {
+      if (profile?.xp < 300) {
+        toast.error(
+          "You need to have above 300XP to get Badge, consider playing the game to get more XPs"
+        );
+        rturn;
+      } else {
+        setClaimLoading(true);
+        const contract = await window?.tronWeb?.contract(
+          abi.entrys,
+          contractAddress
+        );
+        const data = await contract.claimBadge(profile?.xp, "66386638").send({
+          from: window?.tronWeb.defaultAddress.base58, // Sender's address
+          shouldPollResponse: false, // Optional: wait for confirmatio
+        });
+
+        if (data) {
+          setClaimed(true);
+          setBadgeIsOpen(true);
+          toast.success("Badge Claimed and Minted as NFT");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setClaimLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    handleGetIfBarged();
+  }, [claimed, profile]);
 
   return (
     <>
@@ -114,14 +175,30 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className=" px-4 py-2 ">
-            <button
-              className="px-3 py-3 text-white bg-gray-600 animate-bounce hover:bg-gray-500 rounded-lg"
-              onClick={updateProfile}
-            >
-              Update/Create Profile
-            </button>
+            <div className=" px-4 py-2 space-x-4 ">
+              <button
+                className="px-3 py-3 text-white bg-gray-600 animate-bounce hover:bg-gray-500 rounded-lg"
+                onClick={updateProfile}
+              >
+                Update/Create Profile
+              </button>
 
+              {isBarged ? (
+                <button
+                  className="px-3 py-3 text-white bg-gray-600  hover:bg-gray-500 rounded-lg"
+                  onClick={updateProfile}
+                >
+                  you are an Honorable
+                </button>
+              ) : (
+                <button
+                  disabled={claimLoading}
+                  className="px-3 py-3 text-white bg-green-600 animate-bounce hover:bg-gray-500 rounded-lg"
+                  onClick={handleClaim}
+                >
+                  {claimLoading ? "Claiming..." : "Claim Honorable Badge"}
+                </button>
+              )}
             </div>
 
             <div className="rounded-full text-white  flex flex-col px-4 py-2  gap-1">
@@ -247,22 +324,26 @@ const Profile = () => {
               {joinedQuests?.map((quest, index) => (
                 <div
                   key={index}
-              
                   className="p-2 sm:p-4 bg-gray-700 rounded-lg shadow-md "
                 >
                   <img src={CallOfDuty} alt="Quest Icon" />
                   <h3 className="text-black text-base md:text-lg font-semibold mt-2">
                     {quest.title}
                   </h3>
-                  <p className="text-green-700 text-sm">${quest.price.toLocaleString()} </p>
+                  <p className="text-green-700 text-sm">
+                    ${quest.price.toLocaleString()}{" "}
+                  </p>
 
                   <div className="flex text-gray-700 justify-between items-center mt-2">
                     <div className="flex items-center gap-1">
                       <img className="h-4 w-4" src={StarIcon} alt="star icon" />
                       <span className="text-[12px]">4.5</span>
                     </div>
-                    <button     onClick={ () =>   setCompleteQuestModalisOpen(true)} className="bg-[#3B82F6] px-3 text-white font-medium">
-                    Verify Completion
+                    <button
+                      onClick={() => setCompleteQuestModalisOpen(true)}
+                      className="bg-[#3B82F6] px-3 text-white font-medium"
+                    >
+                      Verify Completion
                     </button>
                   </div>
                 </div>
@@ -316,7 +397,7 @@ const Profile = () => {
 
                   <div className="flex flex-col items-start justify-start text-white">
                     <p className="font-semibold text-base sm:text-lg md:text-xl">
-                      1+
+                      1+{isBarged && " Honorable Badge"}
                     </p>
                     <span className="text-gray-400 text-[12px]">
                       Badge Earned
@@ -381,7 +462,14 @@ const Profile = () => {
           <Footer />
         </div>
         {<Modal isOpen={isOpen} onClose={onClose} />}
-        {<CompleteQuestModal isOpen={completeQuestModalisOpen} onClose={completeQuestModalonClose} onSubmit={completeQuestModalonSubmit}/>}
+        <SuccessModal isOpen={BadgeIsOpen} onClose={BadgeIsOnClose} />
+        {
+          <CompleteQuestModal
+            isOpen={completeQuestModalisOpen}
+            onClose={completeQuestModalonClose}
+            onSubmit={completeQuestModalonSubmit}
+          />
+        }
       </div>
       {/* 
       <div>loren10
